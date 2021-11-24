@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @see https://repo.art-er.it Developers' community
+ * @license GPLv3
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3
+ *
+ * @package    arter
+ * @category   CategoryName
+ * @author     Elite Division S.r.l.
+ */
+
+{% language php %}{% copyright_block %}
+
+namespace {{ api.ownerName }}\Service\{{ api.className }}\Resource;
+{% if resource.methodClasses %}
+{% for methodClass in resource.methodClasses %}use {{ api.ownerName }}\Service\{{ api.className }}\{{ methodClass }}{% if methodClass|lower == resource.className|lower or methodClass in api.resourceNames %} as {{ methodClass }}Model{% endif %};
+{% endfor %}{% endif %}
+/**
+ * The "{{ resource.wireName }}" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   ${{ api.name }}Service = new {{ api.ownerName }}\Service\{{ api.className }}(...);
+ *   ${{ resource.codeName }} = ${{ api.name }}Service->{{ resource.codeName }};
+ *  </code>
+ */
+class {{ resource.className }} extends \Google\Service\Resource
+{{% indent %}{% for method in resource.methods %}
+{% call_template _method method=method %}{% endfor %}
+{% endindent %}}
+
+// Adding a class alias for backwards compatibility with the previous class name.
+class_alias({{ resource.className }}::class, '{{ api.ownerName }}_Service_{{ api.className }}_Resource_{{ resource.className }}');

@@ -1,0 +1,130 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @see https://repo.art-er.it Developers' community
+ * @license GPLv3
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3
+ *
+ * @package    arter
+ * @category   CategoryName
+ * @author     Elite Division S.r.l.
+ */
+
+
+/*
+ * This file is part of the Monolog package.
+ *
+ * (c) Jordi Boggiano <j.boggiano@seld.be>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Monolog\Handler;
+
+use Monolog\ResettableInterface;
+use Monolog\Formatter\FormatterInterface;
+
+/**
+ * This simple wrapper class can be used to extend handlers functionality.
+ *
+ * Example: A custom filtering that can be applied to any handler.
+ *
+ * Inherit from this class and override handle() like this:
+ *
+ *   public function handle(array $record)
+ *   {
+ *        if ($record meets certain conditions) {
+ *            return false;
+ *        }
+ *        return $this->handler->handle($record);
+ *   }
+ *
+ * @author Alexey Karapetov <alexey@karapetov.com>
+ */
+class HandlerWrapper implements HandlerInterface, ResettableInterface
+{
+    /**
+     * @var HandlerInterface
+     */
+    protected $handler;
+
+    /**
+     * HandlerWrapper constructor.
+     * @param HandlerInterface $handler
+     */
+    public function __construct(HandlerInterface $handler)
+    {
+        $this->handler = $handler;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isHandling(array $record)
+    {
+        return $this->handler->isHandling($record);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function handle(array $record)
+    {
+        return $this->handler->handle($record);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function handleBatch(array $records)
+    {
+        return $this->handler->handleBatch($records);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function pushProcessor($callback)
+    {
+        $this->handler->pushProcessor($callback);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function popProcessor()
+    {
+        return $this->handler->popProcessor();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFormatter(FormatterInterface $formatter)
+    {
+        $this->handler->setFormatter($formatter);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormatter()
+    {
+        return $this->handler->getFormatter();
+    }
+
+    public function reset()
+    {
+        if ($this->handler instanceof ResettableInterface) {
+            return $this->handler->reset();
+        }
+    }
+}

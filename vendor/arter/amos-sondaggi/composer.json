@@ -1,0 +1,31 @@
+{
+    "name": "arter/amos-sondaggi",
+    "description": "Sistema AMOS per gestire i sondaggi",
+    "keywords": ["amos", "yii2", "sondaggi"],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "http://www.example.com/",
+        "forum": "http://www.example.com/forum/",
+        "wiki": "http://www.example.com/wiki/",
+        "source": "https://github.com/arter/amos-sondaggi"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "ext-json": "*",
+        "arter/amos-admin":"^2.2.0",
+        "arter/amos-attachments":"^1.1.11",
+        "arter/amos-core":"^1.19.0",
+        "arter/amos-dashboard":"^1.9",
+        "arter/amos-email-manager": "^1.1.19",
+        "arter/amos-upload": "*",
+        "kartik-v/yii2-detail-view": "*",
+        "kartik-v/yii2-widget-fileinput": "*"
+    },
+    "autoload": {
+        "psr-4": { 
+            "arter\\amos\\sondaggi\\": "src"
+        }
+    }
+}

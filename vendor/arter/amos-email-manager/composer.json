@@ -1,0 +1,39 @@
+{
+    "name": "arter/amos-email-manager",
+    "description": "Modulo di gestione code email - plugin",
+    "keywords": [
+        "amos",
+        "notifiche",
+        "yii2"
+    ],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core": "~1.7",
+        "arter/amos-dashboard": ">=1.8.15",
+        "mustache/mustache": "^2.9.0",
+        "baibaratsky/yii2-serialized-attributes-behavior": "*",
+        "yiidoc/yii2-redactor": "*"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\emailmanager\\": "src"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "php yii migrate --migrationPath=@vendor/arter/amos-email-manager/migrations --interactive=0"
+    }
+}

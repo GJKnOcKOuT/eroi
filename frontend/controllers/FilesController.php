@@ -1,0 +1,97 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @package    arter
+ * @category   CategoryName
+ */
+
+namespace frontend\controllers;
+
+use Yii;
+use yii\filters\AccessControl;
+use yii\web\NotFoundHttpException;
+
+class FilesController extends \yii\web\Controller
+{
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => [
+                            'index'
+                        ],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * Return the file or exception
+     * @param $file
+     * @return $this
+     * @throws NotFoundHttpException
+     */
+    public function actionIndex($file)
+    {
+        $filePath = __DIR__ . '/../web/' . $file;
+
+        //If file exists
+        if (file_exists($filePath) && !strstr($file, '../')) {
+            /**
+             * @var $fileInfo array
+             */
+            $fileInfo = pathinfo($filePath);
+
+            /**
+             * Extensions locked
+             */
+            $notExpectedFormats = [
+                'cgi-script',
+                'php',
+                'php2',
+                'php3',
+                'php4',
+                'php5',
+                'php6',
+                'php7',
+                'php8',
+                'pl',
+                'py',
+                'js',
+                'jsp',
+                'asp',
+                'htm',
+                'html',
+                'shtml',
+                'sh',
+                'cgi',
+                'git',
+                'htaccess',
+                'htpasswd'
+            ];
+
+            /**
+             * If the extension is not alowed
+             */
+            if (in_array($fileInfo['extension'], $notExpectedFormats)) {
+                throw new NotFoundHttpException('File Not Found');
+            }
+
+            return Yii::$app->response->sendFile($filePath);
+        }
+
+        throw new NotFoundHttpException('File Not Found');
+    }
+}

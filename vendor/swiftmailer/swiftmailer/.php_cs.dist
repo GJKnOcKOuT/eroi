@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @see https://repo.art-er.it Developers' community
+ * @license GPLv3
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3
+ *
+ * @package    arter
+ * @category   CategoryName
+ * @author     Elite Division S.r.l.
+ */
+
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHPUnit75Migration:risky' => true,
+        'php_unit_dedicate_assert' => ['target' => '5.6'],
+        'array_syntax' => ['syntax' => 'short'],
+        'php_unit_fqcn_annotation' => true,
+        'no_unreachable_default_argument_value' => false,
+        'braces' => ['allow_single_line_closure' => true],
+        'heredoc_to_nowdoc' => false,
+        'ordered_imports' => true,
+        'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
+        'native_function_invocation' => ['include' => ['@compiler_optimized'], 'scope' => 'all'],
+        'fopen_flags' => false,
+    ])
+    ->setRiskyAllowed(true)
+    ->setFinder(PhpCsFixer\Finder::create()->in(__DIR__))
+;

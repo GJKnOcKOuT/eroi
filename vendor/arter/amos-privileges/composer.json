@@ -1,0 +1,31 @@
+{
+    "name": "arter/amos-privileges",
+    "description": "AMOS plugin for privileges management (role, permission, domains.. )",
+    "keywords": ["amos", "yii2", "privileges"],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin": "~2.0",
+        "arter/amos-core": "~1.9"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\privileges\\": "src"
+        }
+    },
+    "require-dev": {
+        "yiisoft/yii2-faker": "*"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "arter/amos-partnership-profiles",
+    "description": "Partnership profiles - plugin",
+    "keywords": ["amos", "yii2", "partnership_profiles"],
+    "type": "plugin",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin": "^2.0",
+        "arter/amos-attachments": "^1.1.11",
+        "arter/amos-comuni": "^1.2.8",
+        "arter/amos-community": "^1.5.19",
+        "arter/amos-dashboard": "^1.8.4",
+        "arter/amos-core": "^1.9.60"
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\partnershipprofiles\\": "src"
+        }
+    }
+}

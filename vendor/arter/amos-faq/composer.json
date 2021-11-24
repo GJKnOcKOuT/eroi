@@ -1,0 +1,37 @@
+{
+    "name": "arter/amos-faq",
+    "description": "Sistema AMOS per le FAQ",
+    "keywords": ["amos", "yii2", "faq"],
+    "homepage": "http://www.example.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "forum": "http://www.example.com/forum/",
+        "wiki": "http://www.example.com/wiki/"        
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core":"~1.9",
+        "arter/amos-dashboard":"~1.8",
+        "kartik-v/yii2-widget-select2": "*",
+        "kartik-v/yii2-widget-activeform": "*"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\faq\\": "src"
+        }
+    },
+    "require-dev": {
+        "yiisoft/yii2-faker": "*"
+    }
+}

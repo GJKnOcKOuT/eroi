@@ -1,0 +1,34 @@
+{
+    "name": "arter/amos-cwh",
+    "description": "Gestione CWH - plugin",
+    "keywords": [
+        "amos",
+        "cwh",
+        "yii2"
+    ],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin": "^2.2.0",
+        "arter/amos-core":"^1.9.60",
+        "hanneskod/classtools": "~1.0"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\cwh\\": "src"
+        }
+    }
+}

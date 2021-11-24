@@ -1,0 +1,37 @@
+{
+    "name": "arter/amos-events",
+    "description": "Events manager with calendar - plugin",
+    "keywords": ["amos", "yii2", "events"],
+    "type": "plugin",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/arter/amos-events/issues?state=open",
+        "source": "https://github.com/arter/amos-events"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "cornernote/yii2-workflow-manager": "*",
+        "arter/amos-admin": "^2.0",
+        "arter/amos-attachments": "^1.0.3",
+        "arter/amos-comments":"^1.1",
+        "arter/amos-community": "^1.5.29",
+        "arter/amos-comuni": "*",
+        "arter/amos-core":"^1.9.60",
+        "arter/amos-dashboard": "^1.8.16",
+        "arter/amos-wizflow": "^1.0.2",
+        "arter/amos-workflow": "^1.0",
+        "raoul2000/yii2-workflow": "*",
+        "simomatte/yii2-dynamicform": "~2.0.2",
+        "symfony/dom-crawler": "2.8",
+        "symfony/css-selector": "2.8",
+        "2amigos/yii2-qrcode-helper": "1.0.2",
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-popover-x": "*",
+        "moonlandsoft/yii2-phpexcel": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\events\\": "src"
+        }
+    }
+}

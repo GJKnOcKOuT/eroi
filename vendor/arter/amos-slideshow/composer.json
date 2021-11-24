@@ -1,0 +1,26 @@
+{
+    "name": "arter/amos-slideshow",
+    "description": "Sistema AMOS per lo slideshow",
+    "keywords": ["amos", "yii2", "slideshow"],
+    "homepage": "http://git.arter.it/arter/amos-slideshow",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "http://git.arter.it/arter/amos-slideshow/issues",
+        "forum": "http://www.example.com/forum/",
+        "wiki": "http://git.arter.it/arter/amos-slideshow/wikis/home",
+        "source": "http://git.arter.it/arter/amos-slideshow/tree/master"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin": ">=1.8",
+        "arter/amos-core": "^1.9.50",
+        "arter/amos-dashboard":"^1.8.15",
+        "yiidoc/yii2-redactor": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\slideshow\\": "src"
+        }
+    }
+}

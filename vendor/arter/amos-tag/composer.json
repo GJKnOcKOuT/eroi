@@ -1,0 +1,38 @@
+{
+    "name": "arter/amos-tag",
+    "description": "Sistema AMOS per le TAG",
+    "keywords": ["amos", "yii2", "tag"],
+    "homepage": "http://www.example.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "forum": "http://www.example.com/forum/",
+        "wiki": "http://www.example.com/wiki/"        
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core":"~1.9",
+        "arter/amos-admin":">=1.8",
+        "arter/amos-dashboard":"~1.5",
+        "creocoder/yii2-nested-sets": "0.9.*",
+        "arter/yii2-tree-manager": "~2.0.0"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\tag\\": "src"
+        }
+    },
+    "require-dev": {
+        "yiisoft/yii2-faker": "*"
+    }
+}

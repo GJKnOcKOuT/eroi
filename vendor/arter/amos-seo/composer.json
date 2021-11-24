@@ -1,0 +1,26 @@
+{
+    "name": "arter/amos-seo",
+    "description": "Amos SEO",
+    "keywords": [
+        "amos",
+        "seo"
+    ],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core": ">=1.9",
+        "simialbi/yii2-schema-org": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\seo\\": "src"
+        }
+    },
+    "fxp-asset": {
+        "installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}

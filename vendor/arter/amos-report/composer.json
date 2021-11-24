@@ -1,0 +1,37 @@
+{
+    "name": "arter/amos-report",
+    "description": "Sistema AMOS per le segnalazioni",
+    "keywords": ["amos", "yii2", "report"],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.4.0",
+        "2amigos/yii2-ckeditor-widget": "~1.0",
+        "cornernote/yii2-workflow-manager": "*",
+        "arter/amos-admin": "~2.0",
+        "arter/amos-core": "^1.9.50",
+        "arter/amos-notify": "~1.4",
+        "raoul2000/yii2-workflow": "*",
+        "raoul2000/yii2-workflow-view": "*",
+        "yiidoc/yii2-redactor": "*"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\report\\": "src"
+        }
+    },
+    "require-dev": {
+        "yiisoft/yii2-faker": "*"
+    }
+}

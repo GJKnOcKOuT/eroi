@@ -1,0 +1,47 @@
+{
+    "name": "arter/amos-admin",
+    "description": "Gestione utenti - plugin",
+    "keywords": [
+        "amos",
+        "admin",
+        "user",
+        "profile",
+        "yii2"
+    ],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-comuni": "*",
+        "arter/amos-core": "^1.16.0",
+        "arter/amos-attachments": "^1.1.11",
+        "arter/amos-notify": "^1.4.17",
+        "arter/amos-social-auth": "^1.1.7",
+        "arter/amos-privileges": "^1.0.0",
+        "softcommerce/yii2-knob": "*",
+        "raoul2000/yii2-workflow": "*",
+        "raoul2000/yii2-workflow-view": "*",
+        "cornernote/yii2-workflow-manager": "*",
+        "himiklab/yii2-recaptcha-widget": "*"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\admin\\": "src"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "php yii migrate --migrationPath=@vendor/arter/amos-admin/migrations --interactive=0"
+    }
+}

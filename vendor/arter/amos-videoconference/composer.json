@@ -1,0 +1,28 @@
+{
+    "name": "arter/amos-videoconference",
+    "description": "Amos Videoconference",
+    "keywords": [
+        "amos",
+        "video",
+        "conference"
+    ],
+    "homepage": "http://www.arter.it/",
+    "type": "component",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core": ">=1.9",
+        "arter/amos-notify": ">=1.4",
+        "softark/yii2-dual-listbox": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\videoconference\\": "src"
+        }
+    },
+    "fxp-asset": {
+        "installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}

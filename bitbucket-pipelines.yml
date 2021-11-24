@@ -1,0 +1,16 @@
+image: smartapps/bitbucket-pipelines-debian-9
+pipelines:
+  default:
+    - step:
+        script:
+          - service mysql start
+          - mysql -h localhost --user=root --password=root -e "CREATE DATABASE test CHARACTER SET utf8 COLLATE utf8_general_ci;"
+          - composer config -g github-oauth.github.com c981a5f0ce4cf359fbb52a88652186be4e0fa2b5
+          - composer config -g repositories.amos4 composer http://packages.arter.0.appdemoweb.org/
+          - php init --env=Development --overwrite=All
+          - composer self-update && composer --version
+          - composer update --dev --prefer-dist --no-interaction
+          - sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" frontend/config/main.php
+          - sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" backend/config/main.php
+          - php yii_test migrate --interactive=0
+          - vendor/bin/codecept run -vvv

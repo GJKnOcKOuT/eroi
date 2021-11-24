@@ -1,0 +1,39 @@
+{
+    "name": "arter/amos-chat",
+    "description": "Sistema AMOS per la chat",
+    "keywords": ["amos", "yii2", "chat"],
+    "homepage": "http://git.arter.it/arter/amos-chat",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "http://git.arter.it/arter/amos-chat/issues",
+        "forum": "http://www.example.com/forum/",
+        "wiki": "http://git.arter.it/arter/amos-chat/wikis/home",
+        "source": "http://git.arter.it/arter/amos-chat/tree/master"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin": "^2.0.0",
+        "arter/amos-core":"^1.9.60",
+        "arter/amos-email-manager": "^1.1.0",
+        "kop/yii2-scroll-pager": "~2.2"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\chat\\": "src"
+        }
+    },
+    "require-dev": {
+        "yiisoft/yii2-faker": "*"
+    }
+}

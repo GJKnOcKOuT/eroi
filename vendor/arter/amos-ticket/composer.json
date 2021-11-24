@@ -1,0 +1,21 @@
+{
+    "name": "arter/amos-ticket",
+    "description": "Amos Ticket",
+    "type": "component",
+    "keywords": [
+        "amos",
+        "ticket"
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin":"^2.0.31",
+        "arter/amos-core": "^1.9.58",
+        "arter/amos-email-manager": "^1.1.19",
+        "softark/yii2-dual-listbox": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\ticket\\": "src"
+        }
+    }
+}

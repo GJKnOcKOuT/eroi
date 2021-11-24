@@ -1,0 +1,39 @@
+{
+    "name": "arter/amos-proposte-collaborazione-een",
+    "description": "Sistema AMOS per le proposte di collaborazione europee",
+    "keywords": ["amos", "yii2", "een"],
+    "homepage": "http://git.arter.it/arter/amos-proposte-collaborazione-een",
+    "type": "component",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "http://git.arter.it/arter/amos-proposte-collaborazione-een/issues",
+        "forum": "http://www.example.com/forum/",
+        "wiki": "http://git.arter.it/arter/amos-proposte-collaborazione-een/wikis/home",
+        "source": "http://git.arter.it/arter/amos-proposte-collaborazione-een/tree/master"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core":"^1.9.60",
+        "arter/amos-dashboard":"^1.5",
+        "arter/amos-notify": "^1.4.16"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\een\\": "src"
+        }
+    },
+    "require-dev": {
+        "yiisoft/yii2-faker": "*"
+    }
+}

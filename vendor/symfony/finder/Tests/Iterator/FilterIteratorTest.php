@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @see https://repo.art-er.it Developers' community
+ * @license GPLv3
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3
+ *
+ * @package    arter
+ * @category   CategoryName
+ * @author     Elite Division S.r.l.
+ */
+
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\Finder\Tests\Iterator;
+
+/**
+ * @author Alex Bogomazov
+ *
+ * @group legacy
+ */
+class FilterIteratorTest extends RealIteratorTestCase
+{
+    public function testFilterFilesystemIterators()
+    {
+        $i = new \FilesystemIterator($this->toAbsolute());
+
+        // it is expected that there are test.py test.php in the tmpDir
+        $i = $this->getMockForAbstractClass('Symfony\Component\Finder\Iterator\FilterIterator', [$i]);
+        $i->expects($this->any())
+            ->method('accept')
+            ->willReturnCallback(function () use ($i) {
+                return (bool) preg_match('/\.php/', (string) $i->current());
+            }
+        );
+
+        $c = 0;
+        foreach ($i as $item) {
+            ++$c;
+        }
+
+        $this->assertEquals(1, $c);
+
+        $i->rewind();
+
+        $c = 0;
+        foreach ($i as $item) {
+            ++$c;
+        }
+
+        // This would fail in php older than 5.5.23/5.6.7 with \FilterIterator
+        // but works with Symfony\Component\Finder\Iterator\FilterIterator
+        // see https://bugs.php.net/68557
+        $this->assertEquals(1, $c);
+    }
+}

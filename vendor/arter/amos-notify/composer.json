@@ -1,0 +1,38 @@
+{
+  "name": "arter/amos-notify",
+  "description": "Modulo di gestione notifiche - plugin",
+  "keywords": [
+    "amos",
+    "notifiche",
+    "yii2"
+  ],
+  "homepage": "http://www.arter.it/",
+  "type": "component",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "require": {
+    "php": ">=7.0",
+    "arter/amos-admin": "^2.2.0",
+    "arter/amos-core": "^1.19.0",
+    "arter/amos-email-manager": "^1.1.19",
+    "arter/amos-workflow": "^1.0"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "secure-http": false
+  },
+  "autoload": {
+    "psr-4": {
+      "arter\\amos\\notificationmanager\\": "src"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": "php yii migrate --migrationPath=@vendor/arter/amos-notify/migrations --interactive=0"
+  }
+}

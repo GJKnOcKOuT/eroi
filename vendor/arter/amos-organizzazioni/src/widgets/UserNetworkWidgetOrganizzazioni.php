@@ -1,0 +1,377 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @see http://example.com Developers'community
+ * @license GPLv3
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3
+ *
+ * @package    arter\amos\organizzazioni\widgets
+ * @category   CategoryName
+ * @author     Elite Division S.r.l.
+ */
+
+namespace arter\amos\organizzazioni\widgets;
+
+use arter\amos\admin\AmosAdmin;
+use arter\amos\admin\models\UserProfile;
+use arter\amos\admin\models\UserProfileArea;
+use arter\amos\admin\models\UserProfileRole;
+use arter\amos\core\forms\editors\m2mWidget\M2MWidget;
+use arter\amos\core\forms\editors\Select;
+use arter\amos\core\helpers\Html;
+use arter\amos\core\icons\AmosIcons;
+use arter\amos\core\user\User;
+use arter\amos\core\utilities\JsUtility;
+use arter\amos\organizzazioni\models\Profilo;
+use arter\amos\organizzazioni\models\ProfiloUserMm;
+use arter\amos\organizzazioni\Module;
+use Yii;
+use yii\base\Widget;
+use yii\bootstrap\Modal;
+use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
+use yii\web\View;
+use yii\widgets\PjaxAsset;
+
+/**
+ * Class UserNetworkWidgetOrganizzazioni
+ * @package arter\amos\organizzazioni\widgets
+ */
+class UserNetworkWidgetOrganizzazioni extends Widget
+{
+    /**
+     * @var int $userId
+     */
+    public $userId = null;
+
+    /**
+     * @var bool|false true if we are in edit mode, false if in view mode or otherwise
+     */
+    public $isUpdate = false;
+
+    /**
+     * @var string $gridId
+     */
+    public $gridId = 'user-organizzazioni-grid';
+
+    /**
+     * @var AmosAdmin $adminModule
+     */
+    private $adminModule;
+
+    /**
+     * @var Module $organizationsModule
+     */
+    private $organizationsModule;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        $this->adminModule = Yii::$app->getModule('admin');
+        $this->organizationsModule = Module::instance();
+
+        if (is_null($this->userId)) {
+            throw new \Exception(Module::t('amosorganizzazioni', '#Missing_user_id'));
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public static function getSearchPostName()
+    {
+        return 'searchProfiloName';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function run()
+    {
+        $gridId = $this->gridId;
+        $url = \Yii::$app->urlManager->createUrl([
+            '/' . Module::getModuleName() . '/profilo/user-network',
+            'userId' => $this->userId,
+            'isUpdate' => $this->isUpdate
+        ]);
+
+        $js = JsUtility::getSearchM2mFirstGridJs($gridId, $url, static::getSearchPostName());
+        PjaxAsset::register($this->getView());
+        $this->getView()->registerJs($js, View::POS_LOAD);
+
+        $query = $this->getModelDataQuery(static::getSearchPostName());
+
+        /** @var UserProfile $userProfileModel */
+        $userProfileModel = AmosAdmin::instance()->createModel('UserProfile');
+        /** @var UserProfile $model */
+        $model = $userProfileModel::findOne(['user_id' => $this->userId]);
+        $loggedUser = Yii::$app->getUser();
+        $loggedUserId = $loggedUser->id;
+        $this->isUpdate = $this->isUpdate && (($loggedUserId == $model->user_id) || Yii::$app->user->can('AMMINISTRATORE_ORGANIZZAZIONI'));
+
+        /** @var Profilo $profilo */
+        $profilo = Module::instance()->createModel('Profilo');
+        $itemsMittente = $profilo->getUserNetworkWidgetColumns();
+
+        $actionColumnsButtons = [
+            'deleteRelation' => function ($url, $model) use ($loggedUser, $loggedUserId) {
+                /** @var ProfiloUserMm $model */
+                $url = '/' . Module::getModuleName() . '/profilo/elimina-m2m';
+                $organizationId = $model->profilo_id;
+                $targetId = $this->userId;
+                $urlDelete = Yii::$app->urlManager->createUrl([
+                    $url,
+                    'id' => $organizationId,
+                    'targetId' => $targetId
+                ]);
+                $btnDelete = '';
+                if (
+                    (($loggedUserId == $this->userId) && (($model->profilo->created_by != $loggedUserId) || $loggedUser->can('AMMINISTRATORE_ORGANIZZAZIONI'))) ||
+                    $loggedUser->can('AMMINISTRATORE_ORGANIZZAZIONI')
+                ) {
+                    $btnDelete = Html::a(AmosIcons::show('close', ['class' => 'btn-delete-relation']),
+                        $urlDelete,
+                        [
+                            'title' => Module::t('amosorganizzazioni', '#delete'),
+                            'data-confirm' => Module::t('amosorganizzazioni', '#are_you_sure_cancel'),
+                        ]
+                    );
+                }
+                return $btnDelete;
+            }
+        ];
+
+        $defaultActionColumnsTemplate = '';
+
+        if ($this->adminModule->roleAndAreaOnOrganizations) {
+            $defaultActionColumnsTemplate .= '{relationAttributeManage}';
+            $itemsMittente[] = [
+                'label' => Module::t('amosorganizzazioni', '#user_profile_role_label'),
+                'value' => function ($model) {
+                    /** @var ProfiloUserMm $model */
+                    $str = '-';
+                    if (!is_null($model->userProfileRole)) {
+                        $str = $model->userProfileRole->name;
+                    }
+                    return $str;
+                }
+            ];
+            $itemsMittente[] = [
+                'label' => Module::t('amosorganizzazioni', '#user_profile_area_label'),
+                'value' => function ($model) {
+                    /** @var ProfiloUserMm $model */
+                    $str = '-';
+                    if (!is_null($model->userProfileArea)) {
+                        $str = $model->userProfileArea->name;
+                    }
+                    return $str;
+                }
+            ];
+
+            $actionColumnsButtons['relationAttributeManage'] = function ($url, $model) {
+                /** @var ProfiloUserMm $model */
+                $url = Yii::$app->urlManager->createUrl($createUrlParamsRole = [
+                    '/' . Module::getModuleName() . '/profilo/change-user-role-area',
+                    'profiloId' => $model->profilo_id,
+                    'userId' => $this->userId
+                ]);
+
+                $modalId = 'change-organizzazioni-user-role-area-modal-' . $model->profilo_id;
+                $selectRoleId = 'profilo_user_mm-role-' . $model->profilo_id;
+                $selectAreaId = 'profilo_user_mm-area-' . $model->profilo_id;
+
+                Modal::begin([
+                    'header' => Module::t('amosorganizzazioni', 'Manage role and area'),
+                    'id' => $modalId,
+                ]);
+
+                echo Html::tag('div', Html::label('Ruolo', 'user_profile_role_id') . Select::widget([
+                        'auto_fill' => true,
+                        'hideSearch' => true,
+                        'theme' => 'bootstrap',
+                        'data' => ArrayHelper::map($this->getUserProfileRoles($model), 'id', 'name'),
+                        'model' => $model,
+                        'attribute' => 'user_profile_role_id',
+                        'options' => [
+                            'prompt' => Module::t('amosorganizzazioni', 'Select/Choose') . '...',
+                            'disabled' => false,
+                            'id' => $selectRoleId
+                        ],
+                        'pluginOptions' => [
+                            'allowClear' => false,
+                        ]
+                    ]), ['class' => 'm-15-0']);
+
+                echo Html::tag('div', Html::label('Area', 'user_profile_area_id') . Select::widget([
+                        'auto_fill' => true,
+                        'hideSearch' => true,
+                        'theme' => 'bootstrap',
+                        'data' => ArrayHelper::map($this->getUserProfileAreas($model), 'id', 'name'),
+                        'model' => $model,
+                        'attribute' => 'user_profile_area_id',
+                        'options' => [
+                            'prompt' => Module::t('amosorganizzazioni', 'Select/Choose') . '...',
+                            'disabled' => false,
+                            'id' => $selectAreaId
+                        ],
+                        'pluginOptions' => [
+                            'allowClear' => false,
+                        ]
+                    ]), ['class' => 'm-15-0']);
+
+                echo Html::tag('div',
+                    Html::a(Module::t('amosorganizzazioni', '#cancel'),
+                        null,
+                        ['class' => 'btn btn-secondary', 'data-dismiss' => 'modal'])
+                    . Html::a(Module::t('amosorganizzazioni', 'Save'),
+                        null,
+                        [
+                            'class' => 'btn btn-primary',
+                            'onclick' => "
+                                $.ajax({
+                                    url : '$url', 
+                                    type: 'POST',
+                                    async: true,
+                                    data: {
+                                        user_profile_role: $('#$selectRoleId').val(),
+                                        user_profile_area: $('#$selectAreaId').val()
+                                    },
+                                    success: function(response) {
+                                       $('#$modalId').modal('hide');
+                                       $('#reset-search-btn-$this->gridId').click();
+                                   }
+                                });
+                            return false;"
+                        ]),
+                    ['class' => 'pull-right m-15-0']
+                );
+                Modal::end();
+
+                $btn = Html::a(
+                    Module::t('amosorganizzazioni', '#change_role_area'),
+                    null, [
+                    'class' => 'btn btn-tools-secondary btn-tools-secondary-text',
+                    'title' => Module::t('amosorganizzazioni', '#change_role_area'),
+                    'data-toggle' => 'modal',
+                    'data-target' => '#' . $modalId,
+                    'onclick' => 'checkSelect2Init("' . $modalId . '", "' . $selectRoleId . '");checkSelect2Init("' . $modalId . '", "' . $selectAreaId . '");'
+                ]);
+
+                return $btn;
+            };
+        }
+
+        if ($this->organizationsModule->enableConfirmUsersJoinRequests) {
+            $itemsMittente[] = [
+                'label' => Module::t('amosorganizzazioni', '#profilo_user_mm_status_label'),
+                'value' => function ($model) {
+                    /** @var ProfiloUserMm $model */
+                    $str = Module::t('amosorganizzazioni', $model->status);
+                    return $str;
+                }
+            ];
+        }
+
+        $defaultActionColumnsTemplate .= '{deleteRelation}';
+
+        $widget = M2MWidget::widget([
+            'model' => $model,
+            'modelId' => $model->id,
+            'modelData' => $query,
+            'overrideModelDataArr' => true,
+            'forceListRender' => true,
+            'targetUrlParams' => [
+                'viewM2MWidgetGenericSearch' => true
+            ],
+            'gridId' => $gridId,
+            'firstGridSearch' => true,
+            'itemsSenderPageSize' => 10,
+            'pageParam' => 'page-organizations',
+            'disableCreateButton' => true,
+            'createAssociaButtonsEnabled' => $this->isUpdate,
+            'btnAssociaLabel' => Module::t('amosorganizzazioni', '#add_new_organization'),
+            'actionColumnsTemplate' => $this->isUpdate ? $defaultActionColumnsTemplate : '',
+            'deleteRelationTargetIdField' => 'user_id',
+            'targetUrl' => '/' . Module::getModuleName() . '/profilo/associate-organization-m2m',
+            'createNewTargetUrl' => '/admin/user-profile/create',
+            'moduleClassName' => Module::className(),
+            'targetUrlController' => 'organizzazioni',
+            'postName' => 'User',
+            'postKey' => 'user',
+            'permissions' => [
+                'add' => 'ASSOCIATE_ORGANIZZAZIONI_TO_USER',
+                'manageAttributes' => 'ASSOCIATE_ORGANIZZAZIONI_TO_USER'
+            ],
+            'actionColumnsButtons' => $actionColumnsButtons,
+            'itemsMittente' => $itemsMittente,
+        ]);
+
+        return "<div id='" . $gridId . "' data-pjax-container='" . $gridId . "-pjax' data-pjax-timeout=\"1000\">"
+            . "<h3>" . Module::tHtml('amosorganizzazioni', '#organization') . "</h3>"
+            . $widget . "</div>";
+    }
+
+    /**
+     * @param string $searchPostName
+     * @return ActiveQuery
+     * @throws \yii\base\InvalidConfigException
+     */
+    private function getModelDataQuery($searchPostName)
+    {
+        /** @var Profilo $profilo */
+        $profilo = Module::instance()->createModel('Profilo');
+        /** @var ProfiloUserMm $profiloUserMm */
+        $profiloUserMm = Module::instance()->createModel('ProfiloUserMm');
+        /** @var ActiveQuery $query */
+        $query = $profiloUserMm::find();
+        $query->innerJoinWith('profilo');
+        $query->andWhere([$profiloUserMm::tableName() . '.user_id' => $this->userId]);
+
+        $searchName = Yii::$app->request->post($searchPostName);
+        if (!is_null($searchName) && !empty($searchName)) {
+            $query->andFilterWhere(['like', $profilo::tableName() . '.name', $searchName]);
+        }
+        return $query;
+    }
+
+    /**
+     * @param ProfiloUserMm $profiloUserMm
+     * @return UserProfileArea[]
+     * @throws \yii\base\InvalidConfigException
+     */
+    private function getUserProfileAreas($profiloUserMm)
+    {
+        /** @var ActiveQuery $query */
+        $query = UserProfileArea::find();
+        if ($this->adminModule->roleAndAreaOnOrganizations && $this->adminModule->roleAndAreaFromOrganizationsWithTypeCat) {
+            $query->andWhere(['type_cat' => [UserProfileArea::TYPE_CAT_GENERIC, $profiloUserMm->profilo->profilo_enti_type_id]]);
+        }
+        $query->orderBy(['order' => SORT_ASC]);
+        $areas = $query->all();
+        return $areas;
+    }
+
+    /**
+     * @param ProfiloUserMm $profiloUserMm
+     * @return UserProfileArea[]
+     * @throws \yii\base\InvalidConfigException
+     */
+    private function getUserProfileRoles($profiloUserMm)
+    {
+        /** @var ActiveQuery $query */
+        $query = UserProfileRole::find();
+        if ($this->adminModule->roleAndAreaOnOrganizations && $this->adminModule->roleAndAreaFromOrganizationsWithTypeCat) {
+            $query->andWhere(['type_cat' => [UserProfileRole::TYPE_CAT_GENERIC, $profiloUserMm->profilo->profilo_enti_type_id]]);
+        }
+        $query->orderBy(['order' => SORT_ASC]);
+        $areas = $query->all();
+        return $areas;
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "arter/amos-comuni",
+    "description": "Dati ISTAT - Comuni, province, regioni, nazioni, continenti aggiornati a LUGLIO 2016",
+    "keywords": ["amos", "yii2", "comuni"],
+    "homepage": "http://www.arter.it/",
+    "type": "library",
+    "license": "",
+    "support": {
+        "source": "https://github.com/arter/amos-comuni"
+    },
+    "require": {
+        "yiisoft/yii2": "*",
+        "arter/amos-core": "*"        
+    },    
+    "config": {
+        "process-timeout": 1800,
+        "secure-http": false
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\comuni\\": "src"
+        }
+    }
+}
+ 

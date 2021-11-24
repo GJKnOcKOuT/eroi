@@ -1,0 +1,18 @@
+{
+    "name": "arter/amos-layout",
+    "description": "Amos Basic Layout",
+    "keywords": ["amos", "yii2", "less", "css", "layout"],
+    "homepage": "https://bitbucket.org/arter/amos-layout",
+    "type": "component",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-core":"^1.9.58",
+        "arter/amos-dashboard":"^1.9.0",
+        "bower-asset/sticky-sidebar": "^3.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\layout\\": "src"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "arter/amos-social-auth",
+    "description": "Social Auth",
+    "keywords": ["amos", "auth", "social", "yii2"],
+    "homepage": "https://bitbucket.org/arter/amos-social-auth",
+    "type": "component",
+    "require": {
+        "php": ">=5.4.0",
+        "arter/amos-admin":"^2.0.18",
+        "arter/amos-core":"^1.9.52",
+        "arter/amos-attachments":"^1.0",
+        "hybridauth/hybridauth": "~2.9",
+        "google/apiclient": "^2.0",
+        "yiisoft/yii2-authclient": "^2.1.0",
+        "conquer/oauth2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "arter\\amos\\socialauth\\": "src"
+        }
+    }
+}

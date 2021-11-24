@@ -1,0 +1,128 @@
+<?php
+/**
+ * Copyright 2020 Art-ER S. Cons. P.A.
+ * EROI - Emilia Romagna Open Innovation is based on:
+ * https://www.open2.0.regione.lombardia.it
+ *
+ * @see https://repo.art-er.it Developers' community
+ * @license GPLv3
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License version 3
+ *
+ * @package    arter
+ * @category   CategoryName
+ * @author     Elite Division S.r.l.
+ */
+
+namespace raoul2000\workflow\validation;
+
+use raoul2000\workflow\base\WorkflowException;
+
+/**
+ * Helper class to create workflow scenario names.
+ *
+ */
+class WorkflowScenario
+{
+	const ANY_STATUS = '*';
+	const ANY_WORKFLOW = '*';
+
+	/**
+	 * Returns the scenario name for a change status action.
+	 *
+	 * @param string $start the absolute start status Id
+	 * @param string $end the absolute end status Id
+	 * @throws WorkflowException
+	 * @return string the scenario name
+	 */
+	public static function changeStatus($start, $end)
+	{
+		if ( empty($start) || ! is_string($start)) {
+			throw new WorkflowException('$start must be a string');
+		}
+
+		if ( empty($end) || ! is_string($end)) {
+			throw new WorkflowException('$end must be a string');
+		}
+
+		return 'from {'.$start.'} to {'.$end.'}';
+	}
+	/**
+	 * Returns the scenario name for a leave status action.
+	 * If no argument is passed to this method, it returns a scenario name
+	 * that matched any status leave.
+	 *
+	 * @param string $status the aboslute id of the status that is left
+	 * @return string the scenario name
+	 */
+	public static function leaveStatus($status = self::ANY_STATUS)
+	{
+		return 'leave status {'.$status.'}';
+	}
+
+	/**
+	 * Returns the scenario name for a enter status action.
+	 * If no argument is passed to this method, it returns a scenario name
+	 * that matched any status entrance.
+   *
+	 * @param string $status the aboslute id of the entered status
+	 * @return string the scenario name
+	 */
+	public static function enterStatus($status = self::ANY_STATUS)
+	{
+		return 'enter status {'.$status.'}';
+	}
+	/**
+	 * Returns the scenario name for a enter workflow action.
+	 * If no argument is passed to this method, the scenario name returned matches
+	 * enter in any workflow.
+	 *
+	 * @param string $workflowId the workflow id
+	 * @return string the scenario name
+	 */
+	public static function enterWorkflow($workflowId = self::ANY_WORKFLOW)
+	{
+		return 'enter workflow {'.$workflowId.'}';
+	}
+	/**
+	 * Returns the scenario name for a leave workflow action.
+	 * If no argument is passed to this method, the scenario name returned matches
+	 * leaving any workflow.
+   *
+	 * @param string $workflowId the workflow id
+	 * @return string the scenario name
+	 */
+	public static function leaveWorkflow($workflowId = self::ANY_WORKFLOW)
+	{
+		return 'leave workflow {'.$workflowId.'}';
+	}
+
+	/**
+	 * Test if 2 scenario match.
+	 *
+	 * @param string $scenario1 scenario name
+	 * @param string $scenario2 scenario name
+	 * @return boolean TRUE if both scenario names match, FALSE otherwise
+	 */
+	public static function match($scenario1, $scenario2)
+	{
+		$match1 = $match2 = [];
+		if ( preg_match_all('/([^\\}{]*)\{([^\{\}]+)\}/', $scenario1, $match1, PREG_SET_ORDER) &&
+			   preg_match_all('/([^\\}{]*)\{([^\{\}]+)\}/', $scenario2, $match2, PREG_SET_ORDER) ) {
+
+			if ( count($match1) != count($match2) ) {
+				return false;
+			}
+			for ($i = 0; $i < count($match1); $i++) {
+				if ( str_replace(' ', '', $match1[$i][1]) != str_replace(' ', '', $match2[$i][1]) ) {
+					return false;
+				}
+				if ( $match1[$i][2] != $match2[$i][2] &&  $match1[$i][2] != '*' && $match2[$i][2] != '*' ) {
+					return false;
+				}
+			}
+		} else {
+			return false;
+		}
+		return true;
+	}
+}
