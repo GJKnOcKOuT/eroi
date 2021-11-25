@@ -89,6 +89,11 @@ class m190410_102614_update_aster_widgets_icons_default_order extends AmosMigrat
                 'update' => true,
                 'default_order' => 370
             ],
+            [
+                'classname' => WidgetIconSupercraft::className(),
+                'update' => true,
+                'default_order' => 380
+            ]
         ];
     }
 }
