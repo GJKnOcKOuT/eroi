@@ -31,12 +31,12 @@ class WidgetIconBestPracticeToValidate extends WidgetIcon
     public function init()
     {
         parent::init();
-        $this->setLabel(Module::tHtml('amosbestpractice', 'To Validate'));
-        $this->setDescription(Module::t('amosbestpractice', 'To Validate'));
+        $this->setLabel(Module::tHtml('supercraft', 'To Validate'));
+        $this->setDescription(Module::t('supercraft', 'To Validate'));
         $this->setIcon('linentita');
         $this->setUrl(['/bestpractice/best-practice/to-validate']);
-        $this->setCode('BEST_PRACTICE_TO_VALIDATE');
-        $this->setModuleName('bestpractice');
+        $this->setCode('SUPER_CRAFT_TO_VALIDATE');
+        $this->setModuleName('supercraft');
         $this->setNamespace(__CLASS__);
         $this->setClassSpan(ArrayHelper::merge($this->getClassSpan(), [
             'bk-backgroundIcon',

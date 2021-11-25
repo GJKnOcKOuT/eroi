@@ -31,12 +31,12 @@ class WidgetIconBestPracticeOwnInterest extends WidgetIcon
     public function init()
     {
         parent::init();
-        $this->setLabel(Module::tHtml('amosbestpractice', 'Own Interest'));
-        $this->setDescription(Module::t('amosbestpractice', 'Own Interest'));
+        $this->setLabel(Module::tHtml('supercraft', 'Own Interest'));
+        $this->setDescription(Module::t('supercraft', 'Own Interest'));
         $this->setIcon('linentita');
         $this->setUrl(['/bestpractice/best-practice/own-interest']);
-        $this->setCode('BEST_PRACTICE_OWN_INTEREST');
-        $this->setModuleName('bestpractice');
+        $this->setCode('SUPER_CRAFT_OWN_INTEREST');
+        $this->setModuleName('supercraft');
         $this->setNamespace(__CLASS__);
         $this->setClassSpan(ArrayHelper::merge($this->getClassSpan(), [
             'bk-backgroundIcon',

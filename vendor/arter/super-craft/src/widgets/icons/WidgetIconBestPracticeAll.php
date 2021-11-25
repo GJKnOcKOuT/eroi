@@ -31,12 +31,12 @@ class WidgetIconBestPracticeAll extends WidgetIcon
     public function init()
     {
         parent::init();
-        $this->setLabel(Module::tHtml('amosbestpractice', 'All'));
-        $this->setDescription(Module::t('amosbestpractice', 'All'));
+        $this->setLabel(Module::tHtml('supercraft', 'All'));
+        $this->setDescription(Module::t('supercraft', 'All'));
         $this->setIcon('linentita');
         $this->setUrl(['/bestpractice/best-practice/all']);
-        $this->setCode('BEST_PRACTICE_ALL');
-        $this->setModuleName('bestpractice');
+        $this->setCode('SUPER_CRAFT_ALL');
+        $this->setModuleName('supercraft');
         $this->setNamespace(__CLASS__);
         $this->setClassSpan(ArrayHelper::merge($this->getClassSpan(), [
             'bk-backgroundIcon',

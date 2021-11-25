@@ -33,8 +33,8 @@ class WidgetIconBestPracticeDashboard extends WidgetIcon
     public function init()
     {
         parent::init();
-        $this->setLabel(Module::tHtml('amosbestpractice', 'Best Practice'));
-        $this->setDescription(Module::t('amosbestpractice', 'Modulo Best Practice'));
+        $this->setLabel(Module::tHtml('supercraft', 'SuperCraft'));
+        $this->setDescription(Module::t('supercraftmodule', 'Modulo SuperCraft'));
 
         if(!empty(\Yii::$app->params['dashboardEngine']) && \Yii::$app->params['dashboardEngine'] == WidgetAbstract::ENGINE_ROWS) {
             $this->setIconFramework(AmosIcons::IC);
@@ -44,8 +44,8 @@ class WidgetIconBestPracticeDashboard extends WidgetIcon
         }
 
         $this->setUrl(['/bestpractice/best-practice/own-interest']);
-        $this->setCode('BEST_PRACTICE_DASHBOARD');
-        $this->setModuleName('bestpractice');
+        $this->setCode('SUPER_CRAFT_DASHBOARD');
+        $this->setModuleName('supercraft');
         $this->setNamespace(__CLASS__);
 
         $paramsClassSpan = ['bk-backgroundIcon',
