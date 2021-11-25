@@ -78,7 +78,12 @@ class m190319_091623_aster_default_plugin_order extends AmosMigrationWidgets
                 'classname' => arter\amos\dashboard\widgets\icons\WidgetIconManagement::className(),
                 'update' => true,
                 'default_order' => 270
-            ]
+            ],
+            [
+            'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
+            'update' => true,
+            'default_order' => 280
+            ],
         ];
     }
 }

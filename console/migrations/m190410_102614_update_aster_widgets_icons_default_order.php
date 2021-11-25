@@ -10,7 +10,7 @@
  */
 
 use arter\amos\admin\widgets\icons\WidgetIconAdmin;
-use arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard;
+use arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard;
 use arter\amos\community\widgets\icons\WidgetIconCommunityDashboard;
 use arter\amos\core\migration\AmosMigrationWidgets;
 use arter\amos\dashboard\utility\DashboardUtility;
@@ -70,7 +70,7 @@ class m190410_102614_update_aster_widgets_icons_default_order extends AmosMigrat
                 'default_order' => 330
             ],
             [
-                'classname' => WidgetIconBestPracticeDashboard::className(),
+                'classname' => \arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
                 'update' => true,
                 'default_order' => 340
             ],
@@ -90,10 +90,10 @@ class m190410_102614_update_aster_widgets_icons_default_order extends AmosMigrat
                 'default_order' => 370
             ],
             [
-                'classname' => WidgetIconSupercraft::className(),
+                'classname' => WidgetIconSuperCraftDashboard::className(),
                 'update' => true,
                 'default_order' => 380
-            ]
+            ],
         ];
     }
 }

@@ -25,7 +25,7 @@ use yii\helpers\ArrayHelper;
  * Class WidgetIconBestPracticeDashboard
  * @package arter\amos\best\practice\widgets\icons
  */
-class WidgetIconBestPracticeDashboard extends WidgetIcon
+class WidgetIconSuperCraftDashboard extends WidgetIcon
 {
     /**
      * @inheritdoc

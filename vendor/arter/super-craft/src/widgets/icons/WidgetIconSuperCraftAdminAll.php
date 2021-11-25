@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
  * Class WidgetIconBestPracticeAdminAll
  * @package arter\amos\best\practice\widgets\icons
  */
-class WidgetIconBestPracticeAdminAll extends WidgetIcon
+class WidgetIconSuperCraftAdminAll extends WidgetIcon
 {
     /**
      * @inheritdoc

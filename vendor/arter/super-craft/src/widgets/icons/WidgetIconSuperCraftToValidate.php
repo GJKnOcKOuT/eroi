@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
  * Class WidgetIconBestPracticeAdminAll
  * @package arter\amos\best\practice\widgets\icons
  */
-class WidgetIconBestPracticeAll extends WidgetIcon
+class WidgetIconSuperCraftToValidate extends WidgetIcon
 {
     /**
      * @inheritdoc
@@ -31,11 +31,11 @@ class WidgetIconBestPracticeAll extends WidgetIcon
     public function init()
     {
         parent::init();
-        $this->setLabel(Module::tHtml('supercraft', 'All'));
-        $this->setDescription(Module::t('supercraft', 'All'));
+        $this->setLabel(Module::tHtml('supercraft', 'To Validate'));
+        $this->setDescription(Module::t('supercraft', 'To Validate'));
         $this->setIcon('linentita');
-        $this->setUrl(['/bestpractice/best-practice/all']);
-        $this->setCode('SUPER_CRAFT_ALL');
+        $this->setUrl(['/bestpractice/best-practice/to-validate']);
+        $this->setCode('SUPER_CRAFT_TO_VALIDATE');
         $this->setModuleName('supercraft');
         $this->setNamespace(__CLASS__);
         $this->setClassSpan(ArrayHelper::merge($this->getClassSpan(), [

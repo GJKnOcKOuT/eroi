@@ -17,13 +17,13 @@ return [
     'params' => [
         // Activate the search
         'searchParams' => [
-            'best-practice' => [
+            'super-craft' => [
                 'enable' => true
             ]
         ],
         //active the order
         'orderParams' => [
-            'best-practice' => [
+            'super-craft' => [
                 'enable' => true,
                 'fields' => [
                     'title',

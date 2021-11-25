@@ -103,6 +103,12 @@ class m201118_164950_update_widgets_default_order extends AmosMigrationWidgets
                 'update' => true,
                 'default_order' => 290
             ],
+            [
+                // SUPERCRAFT
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
+                'update' => true,
+                'default_order' => 300
+            ],
         ];
     }
 
