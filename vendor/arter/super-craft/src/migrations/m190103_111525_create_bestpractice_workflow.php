@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
  */
 class m190103_111525_create_bestpractice_workflow extends AmosMigrationWorkflow
 {
-    const WORKFLOW_NAME = 'BestPracticeWorkflow';
+    const WORKFLOW_NAME = 'SuperCraftWorkflow';
     const WORKFLOW_DRAFT = 'DRAFT';
     const WORKFLOW_TOVALIDATE = 'TOVALIDATE';
     const WORKFLOW_VALIDATED = 'VALIDATED';

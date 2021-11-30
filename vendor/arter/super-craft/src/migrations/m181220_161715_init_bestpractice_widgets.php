@@ -32,7 +32,7 @@ class m181220_161715_init_bestpractice_widgets extends AmosMigrationWidgets
     {
         $this->widgets = [
             [
-                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_ENABLED,
@@ -41,47 +41,47 @@ class m181220_161715_init_bestpractice_widgets extends AmosMigrationWidgets
                 'default_order' => 1
             ],
             [
-                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeOwnInterest::className(),
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftOwnInterest::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_ENABLED,
-                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'dashboard_visible' => 0,
                 'default_order' => 10
             ],
             [
-                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeAll::className(),
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftAll::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_ENABLED,
-                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'dashboard_visible' => 0,
                 'default_order' => 20
             ],
             [
-                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeCreatedBy::className(),
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftCreatedBy::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_ENABLED,
-                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'dashboard_visible' => 0,
                 'default_order' => 30
             ],
             [
-                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeToValidate::className(),
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftToValidate::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_ENABLED,
-                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'dashboard_visible' => 0,
                 'default_order' => 40
             ],
             [
-                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeAdminAll::className(),
+                'classname' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftAll::className(),
                 'type' => AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'status' => AmosWidgets::STATUS_ENABLED,
-                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'child_of' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'dashboard_visible' => 0,
                 'default_order' => 50
             ],

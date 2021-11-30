@@ -131,37 +131,37 @@ class m181220_161846_init_bestpractice_permissions extends AmosMigrationPermissi
         $prefixStr = 'Permissions for the dashboard for the widget ';
         return [
             [
-                'name' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeOwnInterest::className(),
+                'name' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftOwnInterest::className(),
                 'type' => Permission::TYPE_PERMISSION,
-                'description' => $prefixStr . 'WidgetIconBestPracticeBusinessModels',
+                'description' => $prefixStr . 'WidgetSuperCraftBusinessModels',
                 'parent' => ['BESTPRACTICE_ADMINISTRATOR','BESTPRACTICE_CREATOR', 'BESTPRACTICE_READER']
             ],
             [
-                'name' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeAll::className(),
+                'name' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftAll::className(),
                 'type' => Permission::TYPE_PERMISSION,
-                'description' => $prefixStr . 'WidgetIconBestPracticeCategories',
+                'description' => $prefixStr . 'WidgetIconSuperCraftCategories',
                 'parent' => ['BESTPRACTICE_ADMINISTRATOR','BESTPRACTICE_CREATOR', 'BESTPRACTICE_READER']
             ],
             [
-                'name' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeCreatedBy::className(),
+                'name' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftCreatedBy::className(),
                 'type' => Permission::TYPE_PERMISSION,
-                'description' => $prefixStr . 'WidgetIconBestPracticeCertificates',
+                'description' => $prefixStr . 'WidgetIconSuperCraftCertificates',
                 'parent' => ['BESTPRACTICE_ADMINISTRATOR','BESTPRACTICE_CREATOR']
             ],
             [
-                'name' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeDashboard::className(),
+                'name' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftDashboard::className(),
                 'type' => Permission::TYPE_PERMISSION,
-                'description' => $prefixStr . 'WidgetIconBestPracticeDashboard',
+                'description' => $prefixStr . 'WidgetIconSuperCraftDashboard',
                 'parent' => ['BESTPRACTICE_ADMINISTRATOR','BESTPRACTICE_CREATOR','BESTPRACTICE_VALIDATOR', 'BESTPRACTICE_READER']
             ],
             [
-                'name' => arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeToValidate::className(),
+                'name' => arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftToValidate::className(),
                 'type' => Permission::TYPE_PERMISSION,
-                'description' => $prefixStr . 'WidgetIconBestPracticeToValidate',
+                'description' => $prefixStr . 'WidgetIconSuperCraftToValidate',
                 'parent' => ['BESTPRACTICE_VALIDATOR']
             ],
             [
-                'name' =>arter\amos\best\practice\widgets\icons\WidgetIconBestPracticeAdminAll::className(),
+                'name' =>arter\amos\best\practice\widgets\icons\WidgetIconSuperCraftAdminAll::className(),
                 'type' => Permission::TYPE_PERMISSION,
                 'description' => $prefixStr . 'WidgetIconBestPracticeTerritories',
                 'parent' => ['BESTPRACTICE_ADMINISTRATOR']

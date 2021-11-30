@@ -14,7 +14,7 @@
  */
 
 
-namespace arter\amos\best\practice\models\base;
+namespace arter\amos\super\craft\models\base;
 
 use arter\amos\core\module\BaseAmosModule;
 use arter\amos\core\record\ContentModel;
@@ -24,7 +24,7 @@ use yii\helpers\ArrayHelper;
 /**
  * Class BestPractice
  *
- * This is the base-model class for table "best_practice".
+ * This is the base-model class for table "SuperCraft".
  *
  * @property integer $id
  * @property string $title

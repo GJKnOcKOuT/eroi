@@ -29,7 +29,7 @@ class m190103_114417_add_bestpractice_workflow_permissions_roles extends AmosMig
     {
         return [
             [
-                'name' => BestPractice::BESTPRACTICE_WORKFLOW_STATUS_DRAFT,
+                'name' => SuperCraft::BESTPRACTICE_WORKFLOW_STATUS_DRAFT,
                 'type' => Permission::TYPE_PERMISSION,
                 'description' => 'Permesso stato workflow BestPractice: bozza',
                 'parent' => [
@@ -39,7 +39,7 @@ class m190103_114417_add_bestpractice_workflow_permissions_roles extends AmosMig
                 ]
             ],
             [
-                'name' => BestPractice::BESTPRACTICE_WORKFLOW_STATUS_TOVALIDATE,
+                'name' => SuperCraft::BESTPRACTICE_WORKFLOW_STATUS_TOVALIDATE,
                 'type' => Permission::TYPE_PERMISSION,
                 'description' => 'Permesso stato workflow BestPractice: da validare',
                 'parent' => [
@@ -49,7 +49,7 @@ class m190103_114417_add_bestpractice_workflow_permissions_roles extends AmosMig
                 ]
             ],
             [
-                'name' => BestPractice::BESTPRACTICE_WORKFLOW_STATUS_VALIDATED,
+                'name' => SuperCraf::BESTPRACTICE_WORKFLOW_STATUS_VALIDATED,
                 'type' => Permission::TYPE_PERMISSION,
                 'description' => 'Permesso stato workflow BestPractice: validato',
                 'parent' => [

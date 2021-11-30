@@ -1,6 +1,6 @@
 {
-    "name": "arter/amos-best-practice",
-    "description": "",
+    "name": "arter/super-craft",
+    "description": "SuperCraft module",
     "type": "component",
     "minimum-stability": "stable",
     "require": {
@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "arter\\amos\\best\\practice\\": "src"
+            "arter\\amos\\super\\craft\\": "src"
         }
     }
 }
