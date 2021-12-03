@@ -11,6 +11,7 @@
 
 return[
     '@vendor/arter/amos-audit/src/migrations',
+    '@vendor/arter/super-craft/src/migrations',
     '@vendor/arter/amos-admin/src/migrations',
     '@vendor/arter/amos-attachments/src/migrations',
     '@vendor/arter/amos-best-practice/src/migrations',

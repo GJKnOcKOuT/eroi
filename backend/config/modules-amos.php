@@ -92,7 +92,7 @@ $modules = [
 //    'report' => [
 //        'class' => 'arter\amos\report\AmosReport',
 //        'modelsEnabled' => [
-//            'arter\amos\best\practice\models\BestPractice',
+//            'arter\amos\best\practice\models\SuperCraft',
 //        ]
 //    ],
     'search' => [

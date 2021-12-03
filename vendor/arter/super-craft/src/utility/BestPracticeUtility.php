@@ -36,7 +36,7 @@ class BestPracticeUtility
         $query = UserProfile::find();
         $query->innerJoin(BestPractice::tableName(), UserProfile::tableName() . '.user_id = ' . BestPractice::tableName() . '.created_by');
         $query->andWhere([BestPractice::tableName() . '.deleted_at' => null]);
-        if (\Yii::$app->controller->id == 'best-practice') {
+        if (\Yii::$app->controller->id == 'super-craft') {
             if (\Yii::$app->controller->action->id == 'all' || \Yii::$app->controller->action->id == 'own-interest') {
                 $query->andWhere([BestPractice::tableName() . '.status' => BestPractice::BESTPRACTICE_WORKFLOW_STATUS_VALIDATED]);
             } elseif (\Yii::$app->controller->action->id == 'to-validate') {

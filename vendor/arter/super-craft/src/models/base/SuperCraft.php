@@ -43,7 +43,7 @@ use yii\helpers\ArrayHelper;
  *
  * @package arter\amos\best\practice\models\base
  */
-abstract class BestPractice extends ContentModel
+abstract class SuperCraft extends ContentModel
 {
 
     /**
@@ -60,7 +60,7 @@ abstract class BestPractice extends ContentModel
      */
     public static function tableName()
     {
-        return 'best_practice';
+        return 'super_craft';
     }
 
     /**
