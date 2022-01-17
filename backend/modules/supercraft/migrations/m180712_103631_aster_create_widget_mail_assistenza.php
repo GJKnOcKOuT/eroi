@@ -23,7 +23,7 @@ class m180712_103631_aster_create_widget_mail_assistenza  extends \arter\amos\co
     {
         $this->widgets = [
             [
-                'classname' => \backend\modules\tickets\widgets\icons\WidgetIconAssistenza::className(),
+                'classname' => \backend\modules\supercraft\widgets\icons\WidgetIconSupercraft::className(),
                 'type' => \arter\amos\dashboard\models\AmosWidgets::TYPE_ICON,
                 'module' => self::MODULE_NAME,
                 'dashboard_visible' => 1,

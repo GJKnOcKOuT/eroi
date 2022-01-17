@@ -23,7 +23,7 @@ $config = [
 ];
 
 
-if (!YII_ENV_PROD) {
+//if (!YII_ENV_PROD) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
@@ -34,6 +34,6 @@ if (!YII_ENV_PROD) {
         'giiamos-crud' => ['class' => 'arter\amos\core\giiamos\crud\Generator'],
         'giiamos-model' => ['class' => 'arter\amos\core\giiamos\model\Generator'],
     ];
-}
+//}
 
 return $config;

@@ -16,7 +16,7 @@ use arter\amos\core\widget\WidgetIcon;
 use Yii;
 use yii\helpers\ArrayHelper; 
 
-class WidgetIconAssistenza extends WidgetIcon {
+class WidgetIconSupercraft extends WidgetIcon {
 
     public function init() {
         parent::init();

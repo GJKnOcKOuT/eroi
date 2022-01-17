@@ -20,7 +20,7 @@ class m180712_154018_aster_widget_assistenza extends \arter\amos\core\migration\
     {
         $this->authorizations = [
             [
-                'name' => \backend\modules\tickets\widgets\icons\WidgetIconAssistenza::className(),
+                'name' => \backend\modules\supercraft\widgets\icons\WidgetIconSupercraft::className(),
                 'type' => \yii\rbac\Permission::TYPE_PERMISSION,
                 'description' => 'Permesso invio email assistenza',
                 'ruleName' => null,
