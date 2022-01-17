@@ -14,7 +14,7 @@
  */
 
 
-namespace arter\amos\best\practice\models\search;
+namespace arter\amos\supercraft\models;
 
 use arter\amos\best\practice\models\BestPractice;
 use yii\base\Model;
@@ -22,7 +22,7 @@ use yii\base\Model;
 /**
  * BestPracticeSearch represents the model behind the search form about `arter\amos\best\practice\models\BestPractice`.
  */
-class BestPracticeSearch extends BestPractice
+class SuperCraftSearch extends SuperCraft
 {
     private $container;
 
@@ -34,7 +34,7 @@ class BestPracticeSearch extends BestPractice
         /** @var bool $isSearch - it is the content model search class */
         $this->isSearch = true;
         parent::__construct($config);
-        $this->modelClassName = BestPractice::className();
+        $this->modelClassName = SuperCraft::className();
     }
 
     /**

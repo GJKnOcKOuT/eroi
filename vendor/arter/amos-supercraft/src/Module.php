@@ -14,7 +14,7 @@
  */
 
 
-namespace arter\amos\best\practice;
+namespace arter\amos\supercraft;
 
 use arter\amos\core\interfaces\SearchModuleInterface;
 use arter\amos\core\module\AmosModule;
@@ -23,12 +23,12 @@ use arter\amos\core\widget\WidgetAbstract;
 
 /**
  * Class Module
- * @package arter\amos\best\practice
+ * @package arter\amos\supercraft
  */
 class Module extends AmosModule implements ModuleInterface, SearchModuleInterface
 {
-    public $controllerNamespace = 'arter\amos\best\practice\controllers';
-    public $name = 'Best practice';
+    public $controllerNamespace = 'arter\amos\supercraft\controllers';
+    public $name = 'SuperCraft';
     
     /**
      * @inheritdoc
@@ -36,7 +36,7 @@ class Module extends AmosModule implements ModuleInterface, SearchModuleInterfac
     public function init()
     {
         if (\Yii::$app instanceof \yii\console\Application) {
-            $this->controllerNamespace = 'arter\amos\best\practice\console';
+            $this->controllerNamespace = 'arter\amos\supercraft\console';
         }
         parent::init();
         \Yii::setAlias('@arter/amos/' . static::getModuleName() . '/controllers', __DIR__ . '/controllers/');
@@ -80,7 +80,7 @@ class Module extends AmosModule implements ModuleInterface, SearchModuleInterfac
      */
     public static function getModelSearchClassName()
     {
-        return __NAMESPACE__ . '\models\search\BestPracticeSearch';
+        return __NAMESPACE__ . '\models\search\SuperCraftSearch';
     }
 
     /**
@@ -89,7 +89,7 @@ class Module extends AmosModule implements ModuleInterface, SearchModuleInterfac
     public static function getModuleIconName()
     {
         if (!empty(\Yii::$app->params['dashboardEngine']) && \Yii::$app->params['dashboardEngine'] == WidgetAbstract::ENGINE_ROWS) {
-            return 'bestpractice';
+            return 'supercraft';
         } else {
             return 'linentita';
         }

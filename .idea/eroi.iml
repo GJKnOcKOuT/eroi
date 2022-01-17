@@ -240,7 +240,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/philippfrenzel/yii2fullcalendar" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/istvan-ujjmeszaros/bootstrap-duallistbox" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/arter/super-craft" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/arter/amos-supercraft" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

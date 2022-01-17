@@ -239,6 +239,7 @@
       <path value="$PROJECT_DIR$/vendor/istvan-ujjmeszaros/bootstrap-duallistbox" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/arter/super-craft" />
+      <path value="$PROJECT_DIR$/vendor/arter/amos-supercraft" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

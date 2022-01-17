@@ -48,10 +48,10 @@ class ImportController extends ConsoleController
         set_time_limit(0);
 
         $this->importBestpracticeRaw();
-        MigrationCommon::printConsoleMessage('Imported Bestpractice raw');
+        MigrationCommon::printConsoleMessage('Imported Supercraft raw');
 
         $this->importBestpractice();
-        MigrationCommon::printConsoleMessage('Imported Bestpractice');
+        MigrationCommon::printConsoleMessage('Imported Supercraft');
 
     }
 

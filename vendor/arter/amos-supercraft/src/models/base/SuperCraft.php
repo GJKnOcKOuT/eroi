@@ -14,7 +14,7 @@
  */
 
 
-namespace arter\amos\super\craft\models\base;
+namespace arter\amos\supercraft\models\base;
 
 use arter\amos\core\module\BaseAmosModule;
 use arter\amos\core\record\ContentModel;
@@ -22,7 +22,7 @@ use arter\amos\core\record\Record;
 use yii\helpers\ArrayHelper;
 
 /**
- * Class BestPractice
+ * Class SuperCraft
  *
  * This is the base-model class for table "SuperCraft".
  *
@@ -41,7 +41,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_by
  * @property integer $deleted_by
  *
- * @package arter\amos\best\practice\models\base
+ * @package arter\amos\supercraft\models\base
  */
 abstract class SuperCraft extends ContentModel
 {
