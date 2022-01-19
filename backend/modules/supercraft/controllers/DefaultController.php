@@ -94,6 +94,6 @@ class DefaultController extends BaseController
      */
     public function actionIndex($layout = NULL)
     {
-
+        echo "ciao";
     }
 }

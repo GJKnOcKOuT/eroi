@@ -134,10 +134,7 @@ $modules = [
         'disableTicketOrganization' => true,
     ],
     'supercraft' => [
-        //'class' => 'arter\amos\ticket\AmosTicket',
-        'disableCategory' => false,
-        'disableInfoFields' => true,
-        'disableTicketOrganization' => true,
+        'class' => 'arter\amos\ticket\AmosTicket',
     ],
 //    'mobilebridge' => [ 'class' => 'arter\amos\mobile\bridge\Module' ],
 ];
