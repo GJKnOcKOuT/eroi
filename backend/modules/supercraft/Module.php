@@ -9,7 +9,7 @@
  * @author     Elite Division S.r.l.
  */
 
-namespace backend\modules\tickets;
+namespace backend\modules\supercraft;
 
 use arter\amos\core\module\AmosModule;
 
@@ -21,9 +21,9 @@ class Module extends AmosModule
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'backend\modules\tickets\controllers';
+    public $controllerNamespace = 'backend\modules\supercraft\controllers';
     public $newFileMode = 0666;
-    public $name = 'tickets';
+    public $name = 'supercraft';
 
     /**
      * @inheritdoc
@@ -59,7 +59,7 @@ class Module extends AmosModule
     public function getWidgetIcons()
     {
         return [
-            \backend\modules\tickets\widgets\icons\WidgetIconAssistenza::className(),
+            \backend\modules\supercraft\widgets\icons\WidgetIconSupercraft::className(),
 
         ];
     }

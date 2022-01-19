@@ -9,7 +9,7 @@
  * @author     Elite Division S.r.l.
  */
 
-namespace backend\modules\supercraft;
+namespace backend\modules\tickets;
 
 use arter\amos\core\module\AmosModule;
 
@@ -21,9 +21,9 @@ class Module extends AmosModule
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'backend\modules\supercraft\controllers';
+    public $controllerNamespace = 'backend\modules\tickets\controllers';
     public $newFileMode = 0666;
-    public $name = 'supercraft';
+    public $name = 'tickets';
 
     /**
      * @inheritdoc
