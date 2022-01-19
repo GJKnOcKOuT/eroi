@@ -134,7 +134,7 @@ $modules = [
         'disableTicketOrganization' => true,
     ],
     'supercraft' => [
-        'class' => 'arter\amos\ticket\AmosTicket',
+        //'class' => 'arter\amos\ticket\AmosTicket',
         'disableCategory' => false,
         'disableInfoFields' => true,
         'disableTicketOrganization' => true,

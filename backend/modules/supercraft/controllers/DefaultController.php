@@ -94,18 +94,6 @@ class DefaultController extends BaseController
      */
     public function actionIndex($layout = NULL)
     {
-        $modelProfile = UserProfile::findOne(['user_id' => Yii::$app->user->id]);
-        $modelForm = new ContactForm();
-        if ($modelForm->load(Yii::$app->request->post()) && $modelForm->validate()) {
-            if ($modelForm->spedisciEmailStandard($modelProfile)) {
-                Yii::$app->session->addFlash('success', 'Grazie per averci contattato. Vi risponderemo appena possibile.');
-            } else {
-                Yii::$app->session->addFlash('error', 'C\'è stato un\'errore nell\'invio dell\'email.');
-            }
-            return $this->refresh();
-        } else {
-            $this->setUpLayout('form');
-            return $this->render('contacts', ['modelForm' => $modelForm, 'modelProfile' => $modelProfile]);
-        }
+
     }
 }
