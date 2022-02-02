@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProcessoAziendale */
+/* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
 $this->title = 'Create Processo Aziendale';
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];

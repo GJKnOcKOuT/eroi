@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProcessoAziendale */
+/* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
 $this->title = 'Update Processo Aziendale: ' . $model->id_processo_aziendale;
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];

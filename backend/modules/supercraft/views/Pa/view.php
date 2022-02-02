@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ProcessoAziendale */
+/* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
 $this->title = $model->id_processo_aziendale;
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];

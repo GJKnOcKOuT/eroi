@@ -1,6 +1,6 @@
 <?php
 
-use app\models\ProcessoInnovativo;
+use backend\modules\supercraft\models\ProcessoInnovativo;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
