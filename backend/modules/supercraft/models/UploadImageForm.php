@@ -5,7 +5,7 @@
  * @Date 22/12/2021
  */
 
-namespace app\models;
+namespace backend\modules\supercraft\models;
 
 /**
  * @Class UploadImageForm

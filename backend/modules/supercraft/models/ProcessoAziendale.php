@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\modules\supercraft\models;
 
 use Yii;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\modules\supercraft\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
