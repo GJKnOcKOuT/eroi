@@ -67,9 +67,7 @@ class PaController extends Controller
         exit;*/
 
         $searchModel = new PaSearch();
-        if (!empty($this->request)) {
-            $dataProvider = $searchModel->search($this->request->queryParams);
-        }
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -155,8 +153,8 @@ class PaController extends Controller
     {
         $model = new ProcessoAziendale();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        if (Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id_processo_aziendale' => $model->id_processo_aziendale]);
             }
         } else {
@@ -179,7 +177,7 @@ class PaController extends Controller
     {
         $model = $this->findModel($id_processo_aziendale);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id_processo_aziendale' => $model->id_processo_aziendale]);
         }
 
@@ -197,7 +195,12 @@ class PaController extends Controller
      */
     public function actionDelete($id_processo_aziendale)
     {
-        $this->findModel($id_processo_aziendale)->delete();
+        try {
+            $this->findModel($id_processo_aziendale)->delete();
+        }catch (Exception $err){
+            return $err;
+        }
+
 
         return $this->redirect(['index']);
     }
