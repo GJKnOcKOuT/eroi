@@ -2,11 +2,11 @@
 
 namespace backend\modules\supercraft\controllers;
 
-use app\models\ProcessoAziendale;
-use app\models\PaSearch;
-use app\models\query;
-use app\models\User;
-use app\models\QueryForm;
+use backend\modules\supercraft\models\ProcessoAziendale;
+use backend\modules\supercraft\models\PaSearch;
+use backend\modules\supercraft\models\query;
+use backend\modules\supercraft\models\User;
+use backend\modules\supercraft\models\QueryForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\db\Exception;

@@ -4,7 +4,7 @@ namespace backend\modules\supercraft\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\ProcessoAziendale;
+use backend\modules\supercraft\models\ProcessoAziendale;
 
 /**
  * PaSearch represents the model behind the search form of `app\models\ProcessoAziendale`.
