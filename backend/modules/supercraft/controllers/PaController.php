@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace backend\modules\supercraft\controllers;
 
 use app\models\ProcessoAziendale;
 use app\models\PaSearch;

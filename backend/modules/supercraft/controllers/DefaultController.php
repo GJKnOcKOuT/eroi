@@ -11,6 +11,8 @@
 
 namespace backend\modules\supercraft\controllers;
 
+use app\models\LoginForm;
+use app\models\UploadImageForm;
 use backend\modules\tickets\models\ContactForm;
 use arter\amos\admin\models\UserProfile;
 use arter\amos\core\controllers\BaseController;
@@ -19,6 +21,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\AccessRule;
 use yii\filters\VerbFilter;
+use yii\web\Controller;
+use yii\web\Response;
+use yii\web\UploadedFile;
+use app\models\query;
 
 /**
  * Class DefaultController
@@ -71,29 +77,109 @@ class DefaultController extends BaseController
         $this->setUpLayout('main');
     }
 
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function actions()
     {
-        $this->setUpLayout('main');
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
 
+    public function actionUploadImage()
+    {
+        $model = new UploadImageForm();
+        if (Yii::$app->request->isPost) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->upload()) {
+                echo "File Uploaded";
+                return;
+            }
+        }
+        return $this->render('upload', ['model' => $model]);
+    }
+
     /**
-     * Displays contacts.
+     * Displays homepage.
      *
      * @return string
      */
-    public function actionIndex($layout = NULL)
+    public function actionIndex()
     {
-        echo "ciao";
+        return $this->render('index');
     }
+
+    /**
+     * Login action.
+     *
+     * @return Response|string
+     */
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+
+        $model->password = '';
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+    /**
+     * Displays contact page.
+     *
+     * @return Response|string
+     */
+    public function actionContact()
+    {
+        $model = new \app\models\ContactForm();
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionAbout()
+    {
+        return $this->render('about');
+    }
+
 }
+
+
+
