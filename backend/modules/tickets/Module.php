@@ -21,7 +21,7 @@ class Module extends AmosModule
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'backend\modules\tickets\controllers';
+    public $controllerNamespace = 'backend\modules\supercraft\controllers';
     public $newFileMode = 0666;
     public $name = 'tickets';
 
