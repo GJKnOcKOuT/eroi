@@ -20,6 +20,10 @@ use yii\filters\VerbFilter;
 class PaController extends Controller
 {
     /**
+     * @var mixed
+     */
+
+    /**
      * @inheritDoc
      */
     public function behaviors()
@@ -63,7 +67,9 @@ class PaController extends Controller
         exit;*/
 
         $searchModel = new PaSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        if (!empty($this->request)) {
+            $dataProvider = $searchModel->search($this->request->queryParams);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
