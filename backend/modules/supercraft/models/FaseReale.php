@@ -80,7 +80,7 @@ class FaseReale extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Pa]].
+     * Gets query for [[pa]].
      *
      * @return \yii\db\ActiveQuery
      */

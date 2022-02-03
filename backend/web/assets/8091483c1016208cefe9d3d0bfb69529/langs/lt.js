@@ -19,7 +19,7 @@ tinymce.addI18n('lt',{
 "Increase indent": "Didinti \u012ftrauk\u0105",
 "Formats": "Formatai",
 "Headers": "Antra\u0161t\u0117s",
-"Select all": "Pa\u017eym\u0117ti visk\u0105",
+"Select all": "pa\u017eym\u0117ti visk\u0105",
 "Header 3": "Antra\u0161t\u0117 3",
 "Blocks": "Blokai",
 "Undo": "Atstatyti",

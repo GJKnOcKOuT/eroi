@@ -62,7 +62,7 @@
         align_right: 'Izlīdzināt pret centru',
         align_justify: 'Izlīdzināt malas',
         horizontalrule: 'Horizontāla līnija',
-        fullscreen: 'Pa visu ekrānu',
+        fullscreen: 'pa visu ekrānu',
         anchor: 'Anchor',
         link_new_tab: 'Open link in new tab',
         underline: 'Underline',

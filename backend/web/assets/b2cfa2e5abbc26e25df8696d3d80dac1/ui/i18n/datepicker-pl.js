@@ -20,7 +20,7 @@ datepicker.regional.pl = {
 	monthNames: [ "Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec",
 	"Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień" ],
 	monthNamesShort: [ "Sty","Lu","Mar","Kw","Maj","Cze",
-	"Lip","Sie","Wrz","Pa","Lis","Gru" ],
+	"Lip","Sie","Wrz","pa","Lis","Gru" ],
 	dayNames: [ "Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota" ],
 	dayNamesShort: [ "Nie","Pn","Wt","Śr","Czw","Pt","So" ],
 	dayNamesMin: [ "N","Pn","Wt","Śr","Cz","Pt","So" ],
