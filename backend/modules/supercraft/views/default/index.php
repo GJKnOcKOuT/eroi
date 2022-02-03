@@ -9,7 +9,7 @@ $this->title = 'SUPERCraft';
     <div class="jumbotron text-center bg-transparent">
         <h1 class="display-4">Benvenuto!</h1>
 
-        <p><a class="btn btn-lg btn-success" href="/pa/index">Visualizza i processi aziendali!</a></p>
+        <p><a class="btn btn-lg btn-success" href="/supercaft/index">Visualizza i processi aziendali!</a></p>
     </div>
 
     <div class="body-content">
@@ -20,14 +20,14 @@ $this->title = 'SUPERCraft';
 
                 <p>Qui puoi creare un nuovo processo aziendale</p>
 
-                <p><a class="btn btn-outline-secondary" href="/pa/create">Crea &raquo;</a></p>
+                <p><a class="btn btn-outline-secondary" href="/supercaft/pa/create">Crea &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Ricerca</h2>
 
                 <p>Qui puoi ricercare un processo aziendale</p>
 
-                <p><a class="btn btn-outline-secondary" href="/pa/index">Ricerca &raquo;</a></p>
+                <p><a class="btn btn-outline-secondary" href="/supercaft/pa/index">Ricerca &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Documentazione</h2>
