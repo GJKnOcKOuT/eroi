@@ -3,6 +3,8 @@
 namespace backend\modules\supercraft\models;
 
 use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "processo_aziendale".
@@ -20,7 +22,7 @@ use Yii;
  * @property FaseReale[] $faseReales
  * @property ProcessoInnovativo $processoInnovativo
  */
-class ProcessoAziendale extends \yii\db\ActiveRecord
+class ProcessoAziendale extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -66,20 +68,20 @@ class ProcessoAziendale extends \yii\db\ActiveRecord
     /**
      * Gets query for [[FaseReales]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getFaseReales()
     {
-        return $this->hasMany(FaseReale::className(), ['id_processo_aziendale' => 'id_processo_aziendale']);
+        return Yii::$app->db->hasMany(FaseReale::className(), ['id_processo_aziendale' => 'id_processo_aziendale']);
     }
 
     /**
      * Gets query for [[ProcessoInnovativo]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProcessoInnovativo()
     {
-        return $this->hasOne(ProcessoInnovativo::className(), ['id_processo_innovativo' => 'id_processo_innovativo']);
+        return Yii::$app->db->hasOne(ProcessoInnovativo::className(), ['id_processo_innovativo' => 'id_processo_innovativo']);
     }
 }
