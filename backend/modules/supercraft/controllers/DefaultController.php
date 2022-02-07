@@ -73,8 +73,8 @@ class DefaultController extends BaseController
     {
         $this->initDashboardTrait();
         $this->setModelObj(new ContactForm());
-        //parent::init();
-        $this->setUpLayout('main');
+        parent::init();
+        $this->setUpLayout('pippo');
     }
 
 

@@ -69,7 +69,7 @@ class PaController extends Controller
         $searchModel = new PaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('@app/frontend/views/layout/main', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
