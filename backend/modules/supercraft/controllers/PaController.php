@@ -67,11 +67,11 @@ class PaController extends Controller
         exit;*/
 
         $searchModel = new PaSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            //'searchModel' => $searchModel,
-            // 'dataProvider' => $dataProvider,
+        return $this->render('@app/frontend/views/layout/main', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
     private function visualizza($data){
