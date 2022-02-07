@@ -52,7 +52,6 @@ return [
     'except' => [
         '.svn',
         '.git',
-        '.gitignore',
         '.gitkeep',
         '.hgignore',
         '.hgkeep',

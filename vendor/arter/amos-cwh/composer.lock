@@ -606,7 +606,6 @@
                     "source",
                     "spec",
                     ".bowerrc",
-                    ".gitignore",
                     ".jshintignore",
                     ".jshintrc",
                     "bower.json",
@@ -976,7 +975,6 @@
                     "lib",
                     ".idea",
                     ".npmignore",
-                    ".gitignore"
                 ]
             },
             "license": [

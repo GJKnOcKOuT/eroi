@@ -69,7 +69,6 @@ function bowerTask() {
       ignore: [
         '.github',
         '.codeclimate.yml',
-        '.gitignore',
         '.npmignore',
         '.travis.yml',
         'scripts'

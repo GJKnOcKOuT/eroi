@@ -107,7 +107,6 @@ class MessageController extends \yii\console\Controller
     public $except = [
         '.svn',
         '.git',
-        '.gitignore',
         '.gitkeep',
         '.hgignore',
         '.hgkeep',

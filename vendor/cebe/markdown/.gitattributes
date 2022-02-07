@@ -1,6 +1,5 @@
 * text=auto
 
 /.gitattributes
-/.gitignore
 /.scrutinizer.yml
 /.travis.yml

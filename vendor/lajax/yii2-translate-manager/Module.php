@@ -150,7 +150,6 @@ class Module extends \yii\base\Module
     public $ignoredItems = [
         '.svn',
         '.git',
-        '.gitignore',
         '.gitkeep',
         '.hgignore',
         '.hgkeep',
