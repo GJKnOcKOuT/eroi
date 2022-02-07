@@ -73,6 +73,7 @@ class DefaultController extends BaseController
     {
         $this->initDashboardTrait();
         $this->setModelObj(new ContactForm());
+        $this->setUpLayout(Yii::$app->getModule('layout'));
         parent::init();
     }
 
