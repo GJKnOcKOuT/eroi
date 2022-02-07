@@ -73,7 +73,7 @@ class DefaultController extends BaseController
     {
         $this->initDashboardTrait();
         $this->setModelObj(new ContactForm());
-        parent::init();
+        //parent::init();
         $this->setUpLayout('main');
     }
 
