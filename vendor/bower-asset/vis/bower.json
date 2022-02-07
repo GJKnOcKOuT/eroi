@@ -32,7 +32,6 @@
     "lib",
     ".idea",
     ".npmignore",
-    ".gitignore"
   ],
   "dependencies": {},
   "devDependencies": {}

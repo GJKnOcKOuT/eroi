@@ -34,7 +34,6 @@
         "exclude": [
             "/Makefile",
             "/.gitattributes",
-            "/.gitignore",
             "/.travis.yml",
             "/phpunit.xml.dist",
             "/tests"

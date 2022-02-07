@@ -29,7 +29,6 @@ return [
     'overwrite' => true,
     'exclude' => [
         '.svn',
-        '.gitignore',
         'messages'
     ]
 ];

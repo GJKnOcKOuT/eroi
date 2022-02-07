@@ -21,7 +21,7 @@ return array(
     'overwrite' => true,
     'exclude' => array(
         '.svn',
-        '.gitignore',
+
         'yiilite.php',
         'yiit.php',
         '/i18n/data',
