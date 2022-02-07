@@ -13,6 +13,7 @@ use yii\db\Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * PaController implements the CRUD actions for ProcessoAziendale model.
@@ -21,6 +22,7 @@ class PaController extends Controller
 {
     /**
      * @var mixed
+     *
      */
 
     /**
@@ -65,15 +67,15 @@ class PaController extends Controller
         var_dump($data);
         echo '</pre>';
         exit;*/
-
-        $searchModel = new PaSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        /**
+         * @var yii\data\ActiveDataProvider $dataProvider
+         **/
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
+
     private function visualizza($data){
         try {
             echo '<pre>';
