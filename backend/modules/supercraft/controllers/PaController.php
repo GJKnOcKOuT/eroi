@@ -113,7 +113,7 @@ class PaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionInCorso()
+    public function actionIncorso()
     {
         $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
         $searchModel = new PaSearch();
