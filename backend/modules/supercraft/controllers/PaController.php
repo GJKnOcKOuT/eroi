@@ -20,6 +20,7 @@ use yii\filters\VerbFilter;
 class PaController extends Controller
 {
     public $layout = 'main';
+
     /**
      * @var mixed
      */
@@ -69,8 +70,7 @@ class PaController extends Controller
 
         $searchModel = new PaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
+        return $this->render('home', [
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -121,14 +121,28 @@ class PaController extends Controller
     {
         $model = new QueryForm();
 
-        if($model->load(Yii::$app->request->post()) && $model->validate()){
-            if(isset($_POST['id_azienda']) && isset($_POST['id_processo_aziendale'])){
-                $this->visualizza($this->queryData($_POST['id_azienda'],$_POST['id_processo_aziendale']));
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if (isset($_POST['id_azienda']) && isset($_POST['id_processo_aziendale'])) {
+                $this->visualizza($this->queryData($_POST['id_azienda'], $_POST['id_processo_aziendale']));
             }
             Yii::$app->session->setFlash('success', 'You have entered the data correctly');
         }
-        return $this->render('query',['model'=>$model]);
+        return $this->render('query', ['model' => $model]);
 
+    }
+
+    /**
+     * @param int $id_processo_aziendale Id Processo Aziendale
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionHome($id_processo_aziendale)
+    {
+        $searchModel = new PaSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('home', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
