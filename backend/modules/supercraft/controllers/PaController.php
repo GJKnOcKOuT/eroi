@@ -116,11 +116,21 @@ class PaController extends Controller
      */
     public function actionOpportunita()
     {
-        $searchModel = new PaSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        return $this->render('opportunita', [
-            'dataProvider' => $dataProvider,
-        ]);
+        {
+            $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
+            $searchModel = new PaSearch();
+            $sql = "SELECT *
+                FROM  processo_aziendale
+                WHERE id_azienda != 1
+        ";
+            $dataProvider = new SqlDataProvider([
+                'sql' => $sql,
+                'totalCount' => $count
+            ]);
+            return $this->render('opportunita', [
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
 
     public function queryData($id_azienda, $id_processo_aziendale, $type)
