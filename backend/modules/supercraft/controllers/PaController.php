@@ -120,7 +120,7 @@ class PaController extends Controller
         $sql = "SELECT *
                 FROM  processo_aziendale
                 WHERE 
-                      id_azienda = 1 AND data_fine = NULL OR data_fine >= CURDATE()      
+                      id_azienda = 1 AND data_fine >= CURDATE()      
         ";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
