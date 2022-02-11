@@ -116,7 +116,7 @@ class PaController extends Controller
 
     public function queryData($id_azienda, $id_processo_aziendale, $type)
     {
-        if ($id_processo_aziendale === null) {
+        if ($id_processo_aziendale === 0) {
             if ($type === 1) {
                 return ProcessoAziendale::find()
                     ->where(['!=', 'id_azienda', $id_azienda])
