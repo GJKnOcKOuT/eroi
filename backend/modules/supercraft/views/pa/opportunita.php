@@ -49,16 +49,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                 'urlCreator' => function ($action, $model, $key, $index) {
                     if ($action === 'view') {
-                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model->id;
+                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model->id_processo_aziendale;
                         return $url;
                     }
 
                     if ($action === 'update') {
-                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model->id;
+                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model->id_processo_aziendale;
                         return $url;
                     }
                     if ($action === 'delete') {
-                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . $model->id;
+                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . $model->id_processo_aziendale;
                         return $url;
                     }
                 }
