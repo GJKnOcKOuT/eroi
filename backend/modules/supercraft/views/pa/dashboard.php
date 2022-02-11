@@ -18,7 +18,9 @@ use yii\grid\GridView;
 /* @var $fl = 0 */
 $this->title = 'Processi Aziendali';
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerCssFile("dashboard.css");
 ?>
+
 <div class="processo-aziendale-index">
 
     <p>
