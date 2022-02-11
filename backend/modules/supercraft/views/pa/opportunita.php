@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'copertina',
             //'id_fase_attuale',
 
-            ['class' => ActionColumn::class,
+            ['class' => 'yii\grid\ActionColumn',
                 'urlCreator' => function ($action, $model, $key, $index) {
                     if ($action === 'view') {
                         $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model->id;
