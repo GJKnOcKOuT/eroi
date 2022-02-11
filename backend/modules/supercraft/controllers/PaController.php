@@ -6,7 +6,7 @@ use backend\modules\supercraft\models\ProcessoAziendale;
 use backend\modules\supercraft\models\PaSearch;
 use backend\modules\supercraft\models\query;
 use backend\modules\supercraft\models\User;
-use backend\modules\supercraft\models\QueryForm;
+use backend\modules\supercraft\models\dashboard;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\SqlDataProvider;
@@ -110,6 +110,52 @@ class PaController extends Controller
     }
 
     /**
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function inCorso()
+    {
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
+        $searchModel = new PaSearch();
+        $sql = "SELECT *
+                FROM  processo_aziendale
+                WHERE 
+                      id_azienda = 1,
+                    data_fine = NULL OR data_fine >= CURDATE()      
+        ";
+        $dataProvider = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => $count
+        ]);
+        return $this->render('dashboard', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function archiviati()
+    {
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
+        $searchModel = new PaSearch();
+        $sql = "SELECT *
+                FROM  processo_aziendale
+                WHERE 
+                      id_azienda = 1,
+                    data_fine != NULL AND data_fine <= CURDATE()      
+        ";
+        $dataProvider = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => $count
+        ]);
+        return $this->render('dashboard', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Mostra le opportunita all'utente, cioè tutte i processi aziendali che potrebbero essere di suo interesse
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -121,7 +167,8 @@ class PaController extends Controller
             $searchModel = new PaSearch();
             $sql = "SELECT *
                 FROM  processo_aziendale
-                WHERE id_azienda != 1
+                WHERE 
+                      id_azienda != 1,
         ";
             $dataProvider = new SqlDataProvider([
                 'sql' => $sql,
@@ -187,7 +234,7 @@ class PaController extends Controller
 
     public function actionQuery()
     {
-        $model = new QueryForm();
+        $model = new dashboard();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if (isset($_POST['id_azienda']) && isset($_POST['id_processo_aziendale'])) {
