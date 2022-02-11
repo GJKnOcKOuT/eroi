@@ -144,7 +144,7 @@ class PaController extends Controller
                 FROM  processo_aziendale
                 WHERE 
                       id_azienda = 1,
-                    data_fine != NULL AND data_fine <= CURDATE()      
+                      data_fine <= CURRENT_DATE      
         ";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
