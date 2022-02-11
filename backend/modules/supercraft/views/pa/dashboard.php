@@ -38,12 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'id_processo_aziendale',
+            'id_processo_aziendale',
             //'id_processo_innovativo',
             'nome',
             'id_azienda',
             'data_inizio',
-           //TODO AGGIUNGERE DATA_FINE SOLO NEL CASO SI STIA GUARDANDO I CASI ARCHIVIATI
+            //TODO AGGIUNGERE DATA_FINE SOLO NEL CASO SI STIA GUARDANDO I CASI ARCHIVIATI
             'descrizione:ntext',
             //'copertina',
             //'id_fase_attuale',
