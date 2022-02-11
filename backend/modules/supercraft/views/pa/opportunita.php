@@ -61,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . $model->id_processo_aziendale;
                         return $url;
                     }
+                    return null;
                 }
             ],
         ],
