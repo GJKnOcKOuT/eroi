@@ -5,6 +5,7 @@ namespace backend\modules\supercraft\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\modules\supercraft\models\ProcessoAziendale;
+use yii\db\Query;
 
 /**
  * PaSearch represents the model behind the search form of `app\models\ProcessoAziendale`.
@@ -55,21 +56,39 @@ class PaSearch extends ProcessoAziendale
             // $query->where('0=1');
             return $dataProvider;
         }
+        {
+            $query->andFilterWhere([
+                'id_processo_aziendale' => $this->id_processo_aziendale,
+                'id_processo_innovativo' => $this->id_processo_innovativo,
+                'id_azienda' => $this->id_azienda,
+                'data_inizio' => $this->data_inizio,
+                'data_fine' => $this->data_fine,
+            ]);
 
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id_processo_aziendale' => $this->id_processo_aziendale,
-            'id_processo_innovativo' => $this->id_processo_innovativo,
-            'id_azienda' => $this->id_azienda,
-            'data_inizio' => $this->data_inizio,
-            'data_fine' => $this->data_fine,
-        ]);
+            $query->andFilterWhere(['like', 'nome', $this->nome])
+                ->andFilterWhere(['like', 'descrizione', $this->descrizione])
+                ->andFilterWhere(['like', 'copertina', $this->copertina])
+                ->andFilterWhere(['like', 'id_fase_attuale', $this->id_fase_attuale]);
+            if ($this->id_processo_aziendale === 0) {
+                if ($params[2] === 1) {
+                    $query->andFilterWhere([
+                        '!=', 'id_azienda', $params[0]
+                    ]);
+                } else {
+                    $query->andFilterWhere([
+                        '=', 'id_azienda', $params[0]
+                    ]);
+                }
+            } else {
+                $query->andFilterWhere([
+                    '=', 'id_azienda', $params[0],
+                    '=', 'id_processo_innovativo', $params[1]
+                ]);
+            }
+            // grid filtering conditions
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'descrizione', $this->descrizione])
-            ->andFilterWhere(['like', 'copertina', $this->copertina])
-            ->andFilterWhere(['like', 'id_fase_attuale', $this->id_fase_attuale]);
 
-        return $dataProvider;
+            return $dataProvider;
+        }
     }
 }

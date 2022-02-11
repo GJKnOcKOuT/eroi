@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $controller->queryData(1, 0, 0),
+        'filterModel' => $searchModel->search([1, 0, 0]),
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
