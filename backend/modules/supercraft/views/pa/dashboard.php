@@ -55,7 +55,7 @@ $this->registerCssFile("/supercraft/css/dashboard.css");
             ['class' => 'yii\grid\ActionColumn',
                 'urlCreator' => function ($action, $model1, $key, $index) {
                     if ($action === 'view') {
-                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model1->id_processo_aziendale;
+                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . print_r($model1[0]);
                         return $url;
                     }
 
@@ -64,7 +64,7 @@ $this->registerCssFile("/supercraft/css/dashboard.css");
                         return $url;
                     }
                     if ($action === 'delete') {
-                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . print_r($model1);
+                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . print_r($model1['id_processo_aziendale']);
                         return $url;
                     }
                 }
