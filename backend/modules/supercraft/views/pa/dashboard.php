@@ -5,6 +5,7 @@
  * @Date 10/02/2022
  */
 
+use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -15,6 +16,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
+/* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl = 0 */
 $this->title = 'Processi Aziendali';
 $this->params['breadcrumbs'][] = $this->title;
@@ -38,7 +40,7 @@ $this->registerCssFile("/supercraft/css/dashboard.css");
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
             //'id_processo_aziendale',
             //'id_processo_innovativo',
@@ -50,7 +52,23 @@ $this->registerCssFile("/supercraft/css/dashboard.css");
             //'copertina',
             //'id_fase_attuale',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::class,
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'view') {
+                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model->id;
+                        return $url;
+                    }
+
+                    if ($action === 'update') {
+                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model->id;
+                        return $url;
+                    }
+                    if ($action === 'delete') {
+                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . $model->id;
+                        return $url;
+                    }
+                }
+            ],
         ],
     ]); ?>
 

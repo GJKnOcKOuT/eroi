@@ -5,6 +5,7 @@
  * @Date 10/02/2022
  */
 
+use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -45,7 +46,23 @@ $this->params['breadcrumbs'][] = $this->title;
             //'copertina',
             //'id_fase_attuale',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::class,
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'view') {
+                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model->id;
+                        return $url;
+                    }
+
+                    if ($action === 'update') {
+                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model->id;
+                        return $url;
+                    }
+                    if ($action === 'delete') {
+                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . $model->id;
+                        return $url;
+                    }
+                }
+            ],
         ],
     ]); ?>
 
