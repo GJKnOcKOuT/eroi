@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Crea Processo Aziendale', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crea Processo Aziendale', ['create'], ['class' => 'btn btn-success rosso']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_processo_aziendale',
+            //'id_processo_aziendale',
             //'id_processo_innovativo',
             'nome',
             'id_azienda',
