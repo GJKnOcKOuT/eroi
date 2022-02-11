@@ -15,12 +15,11 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
-$this->title = 'Processo Aziendale';
+$this->title = 'Processi Aziendali';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="processo-aziendale-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
