@@ -35,11 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <aside><?= Html::a('Crea Processo Aziendale', ['create'], ['class' => 'btn btn-success']) ?></aside>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?=
-
-    $dashboard->grid($dataProvider, $searchModel);
-    ?>
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
