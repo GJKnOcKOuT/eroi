@@ -87,6 +87,29 @@ class PaController extends Controller
 
     }
 
+    /**
+     * @param int $id_processo_aziendale Id Processo Aziendale
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDashboard($id_processo_aziendale)
+    {
+        $searchModel = new PaSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('dashboard', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionOpportunita($id_processo_aziendale)
+    {
+        $searchModel = new PaSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('opportunita', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function queryData($id_azienda, $id_processo_aziendale, $type)
     {
         if ($id_processo_aziendale === null) {
