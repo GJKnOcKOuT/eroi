@@ -10,7 +10,7 @@ use yii\grid\GridView;
 
 /* @var $controller backend\modules\supercraft\controllers\PaController */
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\supercraft\models\PaSearch */
+/* @var $searchModel backend\modules\supercraft\models\PaOpportunita */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel->search([1, 0, 1]),
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

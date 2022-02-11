@@ -10,7 +10,7 @@ use yii\db\Query;
 /**
  * PaSearch represents the model behind the search form of `app\models\ProcessoAziendale`.
  */
-class PaSearch extends ProcessoAziendale
+class PaDashboard extends ProcessoAziendale
 {
     /**
      * {@inheritdoc}
@@ -50,7 +50,6 @@ class PaSearch extends ProcessoAziendale
         ]);
 
         $this->load($params);
-        $params = [1, 0, 0];
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
