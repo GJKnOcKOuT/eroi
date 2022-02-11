@@ -10,7 +10,7 @@ use yii\grid\GridView;
 
 /* @var $controller backend\modules\supercraft\controllers\PaController */
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\supercraft\models\PaOpportunita */
+/* @var $searchModel backend\modules\supercraft\models\PaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
@@ -31,13 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
+        'dataProvider' => $dataProvider->query->andFilterWhere([
+            '!=', 'id_azienda', 1
+        ]),
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_processo_aziendale',
-            'id_processo_innovativo',
+            //'id_processo_aziendale',
+            //'id_processo_innovativo',
             'nome',
             'id_azienda',
             'data_inizio',
