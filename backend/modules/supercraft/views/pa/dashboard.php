@@ -45,10 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'id_azienda',
             'data_inizio',
-            [
-                'data_fine' => 'data_fine',
-                'visible' => $fl,
-            ],
+           //TODO AGGIUNGERE DATA_FINE SOLO NEL CASO SI STIA GUARDANDO I CASI ARCHIVIATI
             'descrizione:ntext',
             //'copertina',
             //'id_fase_attuale',
