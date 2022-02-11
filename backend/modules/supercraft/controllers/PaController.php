@@ -113,7 +113,7 @@ class PaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actioninCorso()
+    public function actionInCorso()
     {
         $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
         $searchModel = new PaSearch();
@@ -143,8 +143,7 @@ class PaController extends Controller
         $sql = "SELECT *
                 FROM  processo_aziendale
                 WHERE 
-                      id_azienda = 1,
-                      data_fine <= CURRENT_DATE      
+                      id_azienda = 1 AND data_fine <= CURRENT_DATE      
         ";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
