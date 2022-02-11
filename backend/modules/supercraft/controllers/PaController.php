@@ -74,26 +74,46 @@ class PaController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-    private function visualizza($data){
+
+    private function visualizza($data)
+    {
         try {
             echo '<pre>';
             var_dump($data);
             echo '</pre>';
-        }catch (InvalidArgumentException $ex){
+        } catch (InvalidArgumentException $ex) {
             return $ex;
         }
 
     }
-    private function queryData($id_azienda,$id_processo_aziendale){
+
+    public function queryData($id_azienda, $id_processo_aziendale, $type)
+    {
+        if ($id_processo_aziendale === null) {
+            if ($type === 1) {
+                return ProcessoAziendale::find()
+                    ->where(['!=', 'id_azienda', $id_azienda])
+                    ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'descrizione'])
+                    ->asArray()
+                    ->all();
+            }
+            return processoAziendale::find()
+                ->where(['=', 'id_azienda', $id_azienda])
+                ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'descrizione'])
+                ->asArray()
+                ->all();
+        }
         return processoAziendale::find()
-            ->where(['=','id_azienda',$id_azienda])
-            ->andWhere(['=','id_processo_aziendale',$id_processo_aziendale])
-            ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'data_fine', 'descrizione'])
+            ->where(['=', 'id_azienda', $id_azienda])
+            ->andWhere(['=', 'id_processo_aziendale', $id_processo_aziendale])
+            ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'descrizione'])
             ->asArray()
             ->all();
 
     }
-    private function queryDataInCorso(){
+
+    private function queryDataInCorso()
+    {
         $time = new \DateTime('now');
         $today = $time->format('Y-m-d');
         return processoAziendale::find()
@@ -105,7 +125,9 @@ class PaController extends Controller
             ->all();
 
     }
-    private function queryDataArchiviati(){
+
+    private function queryDataArchiviati()
+    {
         $time = new \DateTime('now');
         $today = $time->format('Y-m-d');
         return processoAziendale::find()
@@ -211,7 +233,7 @@ class PaController extends Controller
     {
         try {
             $this->findModel($id_processo_aziendale)->delete();
-        }catch (Exception $err){
+        } catch (Exception $err) {
             return $err;
         }
 

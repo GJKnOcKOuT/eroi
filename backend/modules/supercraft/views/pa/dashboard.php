@@ -1,8 +1,14 @@
 <?php
+/**
+ * @User GJKnOcKOuT
+ * @Project eroi
+ * @Date 10/02/2022
+ */
 
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+/* @var $controller backend\modules\supercraft\controllers\PaController */
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\supercraft\models\PaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -26,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => $controller->queryData(1, null, 0),
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
