@@ -15,7 +15,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
-
+/* @var $fl = 0 */
 $this->title = 'Processo Aziendale';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -26,17 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-
-    </p>
-    <p>
         <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Crea Processo Aziendale', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <aside><?= Html::a('Crea Processo Aziendale', ['create'], ['class' => 'btn btn-success']) ?></aside>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -47,7 +45,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'id_azienda',
             'data_inizio',
-            //'data_fine',
+            [
+                'data_fine' => 'data_fine',
+                'visible' => $fl,
+            ],
             'descrizione:ntext',
             //'copertina',
             //'id_fase_attuale',

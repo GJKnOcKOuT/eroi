@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\supercraft\models\PaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Processo Aziendale';
+$this->title = 'SuperCRAFT';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="processo-aziendale-index">
