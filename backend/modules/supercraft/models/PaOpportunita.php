@@ -50,7 +50,6 @@ class PaOpportunita extends ProcessoAziendale
         ]);
 
         $this->load($params);
-        $params = [1, 0, 1];
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -58,10 +57,11 @@ class PaOpportunita extends ProcessoAziendale
             return $dataProvider;
         }
         {
+            // grid filtering conditions
             $query->andFilterWhere([
                 'id_processo_aziendale' => $this->id_processo_aziendale,
                 'id_processo_innovativo' => $this->id_processo_innovativo,
-                '!=', 'id_azienda' => 1,
+                '!=', 'id_azienda', 1,
                 'data_inizio' => $this->data_inizio,
                 'data_fine' => $this->data_fine,
             ]);
@@ -70,23 +70,6 @@ class PaOpportunita extends ProcessoAziendale
                 ->andFilterWhere(['like', 'descrizione', $this->descrizione])
                 ->andFilterWhere(['like', 'copertina', $this->copertina])
                 ->andFilterWhere(['like', 'id_fase_attuale', $this->id_fase_attuale]);
-            if ($this->id_processo_aziendale === 0) {
-                if ($params[2] === 1) {
-                    $query->andFilterWhere([
-                        '!=', 'id_azienda', $params[0]
-                    ]);
-                } else {
-                    $query->andFilterWhere([
-                        '=', 'id_azienda', $params[0]
-                    ]);
-                }
-            } else {
-                $query->andFilterWhere([
-                    '=', 'id_azienda', $params[0],
-                    '=', 'id_processo_innovativo', $params[1]
-                ]);
-            }
-            // grid filtering conditions
 
 
             return $dataProvider;
