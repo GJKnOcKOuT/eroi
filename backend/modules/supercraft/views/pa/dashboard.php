@@ -53,18 +53,18 @@ $this->registerCssFile("/supercraft/css/dashboard.css");
             //'id_fase_attuale',
 
             ['class' => 'yii\grid\ActionColumn',
-                'urlCreator' => function ($action, $model, $key, $index) {
+                'urlCreator' => function ($action, $model1, $key, $index) {
                     if ($action === 'view') {
-                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model->id_processo_aziendale;
+                        $url = 'eroi/supercraft/pa/view?id_processo_aziendale=' . $model1->id_processo_aziendale;
                         return $url;
                     }
 
                     if ($action === 'update') {
-                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model->id_processo_aziendale;
+                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model1->id_processo_aziendale;
                         return $url;
                     }
                     if ($action === 'delete') {
-                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . print_r($model);
+                        $url = 'eroi/supercraft/pa/delete?id_processo_aziendale=' . print_r($model1);
                         return $url;
                     }
                 }
