@@ -40,6 +40,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
     $dashboard->grid($dataProvider, $searchModel);
     ?>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
+            //'id_processo_aziendale',
+            //'id_processo_innovativo',
+            'nome',
+            'id_azienda',
+            'data_inizio',
+            //'data_fine',
+            'descrizione:ntext',
+            //'copertina',
+            //'id_fase_attuale',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>
