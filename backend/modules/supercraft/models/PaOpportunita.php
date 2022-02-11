@@ -61,7 +61,6 @@ class PaOpportunita extends ProcessoAziendale
             $query->andFilterWhere([
                 'id_processo_aziendale' => $this->id_processo_aziendale,
                 'id_processo_innovativo' => $this->id_processo_innovativo,
-                '!=', 'id_azienda', 1,
                 'data_inizio' => $this->data_inizio,
                 'data_fine' => $this->data_fine,
             ]);
@@ -69,9 +68,10 @@ class PaOpportunita extends ProcessoAziendale
             $query->andFilterWhere(['like', 'nome', $this->nome])
                 ->andFilterWhere(['like', 'descrizione', $this->descrizione])
                 ->andFilterWhere(['like', 'copertina', $this->copertina])
-                ->andFilterWhere(['like', 'id_fase_attuale', $this->id_fase_attuale]);
+                ->andFilterWhere(['like', 'id_fase_attuale', $this->id_fase_attuale])
+                ->andFilterWhere(['!=', 'id_azienda', 1,]);
 
-
+            
             return $dataProvider;
         }
     }
