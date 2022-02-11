@@ -88,11 +88,10 @@ class PaController extends Controller
     }
 
     /**
-     * @param int $id_processo_aziendale Id Processo Aziendale
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDashboard($id_processo_aziendale)
+    public function actionDashboard()
     {
         $searchModel = new PaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -101,7 +100,12 @@ class PaController extends Controller
         ]);
     }
 
-    public function actionOpportunita($id_processo_aziendale)
+    /**
+     * Mostra le opportunita all'utente, cioè tutte i processi aziendali che potrebbero essere di suo interesse
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionOpportunita()
     {
         $searchModel = new PaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
