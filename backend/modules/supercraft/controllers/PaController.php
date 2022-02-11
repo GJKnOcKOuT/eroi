@@ -9,6 +9,7 @@ use backend\modules\supercraft\models\User;
 use backend\modules\supercraft\models\QueryForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\SqlDataProvider;
 use yii\db\Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -93,8 +94,16 @@ class PaController extends Controller
      */
     public function actionDashboard()
     {
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
         $searchModel = new PaSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $sql = "SELECT *
+                FROM  processo_aziendale
+                WHERE id_azienda = 1
+        ";
+        $dataProvider = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => $count
+        ]);
         return $this->render('dashboard', [
             'dataProvider' => $dataProvider,
         ]);
