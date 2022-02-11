@@ -60,7 +60,7 @@ $this->registerCssFile("/supercraft/css/dashboard.css");
                     }
 
                     if ($action === 'update') {
-                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model::id_processo_aziendale;
+                        $url = 'eroi/supercraft/pa/update?id_processo_aziendale=' . $model->id_processo_aziendale;
                         return $url;
                     }
                     if ($action === 'delete') {
