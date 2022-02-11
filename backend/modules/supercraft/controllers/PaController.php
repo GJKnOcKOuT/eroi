@@ -164,8 +164,8 @@ class PaController extends Controller
             $searchModel = new PaSearch();
             $sql = "SELECT *
                 FROM  processo_aziendale
-                WHERE NOT id_azienda = 1,
-        ";
+                WHERE NOT id_azienda = 1
+                ";
             $dataProvider = new SqlDataProvider([
                 'sql' => $sql,
                 'totalCount' => $count
