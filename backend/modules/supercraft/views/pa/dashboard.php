@@ -25,12 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
 
     </p>
     <p>
-        <?= Html::button("In Corso", $controller->inCorso()) ?>
-        <?= Html::button("Archiviati", $controller->archiviati()) ?>
+        <<?= Html::a('In Corso', ['inCorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
     </p>
     <aside><?= Html::a('Crea Processo Aziendale', ['create'], ['class' => 'btn btn-success']) ?></aside>
 
