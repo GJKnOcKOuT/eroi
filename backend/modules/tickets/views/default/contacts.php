@@ -4,7 +4,7 @@
  * EROI - Emilia Romagna Open Innovation is based on:
  * https://www.open2.0.regione.lombardia.it
  *
- * @package    backend\modules\supercraftcss\views\default
+ * @package    backend\modules\supercraft\views\default
  * @category   CategoryName
  * @author     Elite Division S.r.l.
  */

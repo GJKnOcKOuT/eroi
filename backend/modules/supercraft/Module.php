@@ -48,7 +48,7 @@ class Module extends AmosModule
      */
     public static function getModuleName()
     {
-        return 'supercraftcss';
+        return 'supercraft';
     }
 
     public function getWidgetGraphics()

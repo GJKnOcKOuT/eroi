@@ -27,7 +27,7 @@ class WidgetIconSupercraft extends WidgetIcon {
         $this->setIconFramework(AmosIcons::AM);
         $this->setIcon('email');
         
-        $this->setUrl(Yii::$app->urlManager->createUrl(['/supercraftcss']));
+        $this->setUrl(Yii::$app->urlManager->createUrl(['/supercraft']));
         $this->setCode('SUPERCRAFT');
         $this->setModuleName('SUPERCraft');
         $this->setNamespace(__CLASS__);

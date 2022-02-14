@@ -28,7 +28,7 @@ use app\models\query;
 
 /**
  * Class DefaultController
- * @package backend\modules\supercraftcss\controllers
+ * @package backend\modules\supercraft\controllers
  */
 class DefaultController extends BaseController
 {
