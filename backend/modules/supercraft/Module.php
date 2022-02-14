@@ -23,7 +23,7 @@ class Module extends AmosModule
      */
     public $controllerNamespace = 'backend\modules\supercraft\controllers';
     public $newFileMode = 0666;
-    public $name = 'supercraft';
+    public $name = 'supercraftcss';
 
     /**
      * @inheritdoc
@@ -48,7 +48,7 @@ class Module extends AmosModule
      */
     public static function getModuleName()
     {
-        return 'supercraft';
+        return 'supercraftcss';
     }
 
     public function getWidgetGraphics()

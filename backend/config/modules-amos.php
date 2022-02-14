@@ -133,7 +133,7 @@ $modules = [
         'disableInfoFields' => true,
         'disableTicketOrganization' => true,
     ],
-    'supercraft' => [
+    'supercraftcss' => [
         'class' => 'backend\modules\supercraft\Module',
     ],
 //    'mobilebridge' => [ 'class' => 'arter\amos\mobile\bridge\Module' ],

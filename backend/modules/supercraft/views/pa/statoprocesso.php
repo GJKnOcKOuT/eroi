@@ -2,7 +2,7 @@
 /**
  * @User GJKnOcKOuT
  * @Project eroi
- * @Date 10/02/2022
+ * @Date 14/02/2022
  */
 
 use yii\grid\ActionColumn;
@@ -18,7 +18,7 @@ use yii\grid\GridView;
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl = 0 */
-$this->title = 'Processi Aziendali';
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
@@ -36,9 +36,9 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?=
+
     GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 

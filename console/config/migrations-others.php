@@ -18,6 +18,6 @@ return [
     '@vendor/lajax/yii2-translate-manager/migrations',
     '@vendor/arter/yii2-filemanager/migrations',
     '@vendor/arter/amos/audit/migrations',
-    '@vendor/arter/amos-supercraft/migration',
+    '@vendor/arter/amos-supercraftcss/migration',
     '@yii/rbac/migrations',
 ];

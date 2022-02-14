@@ -264,7 +264,18 @@ class PaController extends Controller
      */
     public function actionView($id_processo_aziendale)
     {
-        return $this->render('view', [
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
+        $sql = (new \yii\db\Query())
+            ->from('processo_aziendale')
+            ->where(['id_processo_aziendale' => $id_processo_aziendale])
+            ->all();
+
+        $dataProvider = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => $count
+        ]);
+        return $this->render('statoprocesso', [
+            'dataProvider' => $dataProvider,
             'model' => $this->findModel($id_processo_aziendale),
         ]);
     }
