@@ -35,25 +35,11 @@ $pi = ProcessoInnovativo::find()
 
     <?= $form->field($model, 'descrizione')->textarea(['rows' => 6]) ?>
 
-    <?= //$form->field($model, 'copertina')->textInput(['maxlength' => true])  ?>
-
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-    <?php
-    $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
-    $sql = (new \yii\db\Query())
-        ->from('fase')
-        ->where(['id_processo_innovativo' => $model->id_processo_innovativo])
-        ->all();
 
-    $dataProvider = new SqlDataProvider([
-        'sql' => $sql,
-        'totalCount' => $count
-    ]);
-    $position = 1;
-    ?>
     <?php ActiveForm::end(); ?>
 
 </div>

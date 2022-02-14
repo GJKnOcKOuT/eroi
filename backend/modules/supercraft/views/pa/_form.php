@@ -1,5 +1,6 @@
 <?php
 
+use backend\modules\supercraft\models\FasiDiProcesso;
 use backend\modules\supercraft\models\ProcessoInnovativo;
 use yii\data\SqlDataProvider;
 use yii\helpers\Html;
@@ -8,6 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $fasi FasiDiProcesso */
 
 $pi = ProcessoInnovativo::find()
     ->select(['nome'])
