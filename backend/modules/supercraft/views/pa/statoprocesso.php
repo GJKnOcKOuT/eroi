@@ -42,29 +42,15 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 
-            //'id_processo_aziendale',
-            //'id_processo_innovativo',
-            'nome',
-            'id_azienda',
+            'nome_processo',
             'data_inizio',
-            //TODO AGGIUNGERE DATA_FINE SOLO NEL CASO SI STIA GUARDANDO I CASI ARCHIVIATI
-            'descrizione:ntext',
-            //'copertina',
-            //'id_fase_attuale',
+            'data_fine',
 
             ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) {
                     if ($action === 'view') {
                         $url = 'view?id_processo_aziendale=' . $model1['id_processo_aziendale'];
-                        return $url;
-                    }
-
-                    if ($action === 'update') {
-                        $url = 'update?id_processo_aziendale=' . $model1['id_processo_aziendale'];
-                        return $url;
-                    }
-                    if ($action === 'delete') {
-                        $url = 'delete?id_processo_aziendale=' . $model1['id_processo_aziendale'];
                         return $url;
                     }
                 }
