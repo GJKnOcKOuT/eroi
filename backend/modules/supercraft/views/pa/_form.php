@@ -41,20 +41,6 @@ $pi = ProcessoInnovativo::find()
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-    <?php
-    $fasi = (new \yii\db\Query())
-        ->from('fasi_di_processo')
-        ->where(['id_processo_innovativo' => $model->id_processo_innovativo])
-        ->all();
-    foreach ($fasi as $fase) {
-        Yii::$app->db->createCommand()->insert('fase_reale', [
-            'data_inizio' => date("Y-m-d H:i:s"),
-            'descrizione' => $fase->nome_processo,
-            'id_processo_aziendale' => $model->id_processo_aziendale,
-            'id_fasi_di_processo' => $fase->id_fasi_di_processo,
-        ])->execute();
-    }
-    ?>
     <?php ActiveForm::end(); ?>
 
 </div>
