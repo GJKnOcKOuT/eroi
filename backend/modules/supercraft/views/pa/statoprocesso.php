@@ -14,7 +14,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\supercraft\models\PaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $this yii\web\View */
-/* @var $model backend\modules\supercraft\models\ProcessoAziendale */
+/* @var $model */
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl = 0 */
