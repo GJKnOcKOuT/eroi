@@ -266,12 +266,12 @@ class PaController extends Controller
     {
 
 
-        $sql = ('SELECT fp.*,fr.*
+        $sql = ("SELECT fp.*,fr.*
 FROM processo_aziendale pa 
 INNER JOIN processo_innovativo pi ON (pa.id_processo_innovativo = pi.id_processo_innovativo)
 INNER JOIN fasi_di_processo fp ON (fp.id_processo_innovativo = pi.id_processo_innovativo) 
 LEFT JOIN fase_reale fr ON (fr.id_processo_aziendale = pa.id_processo_aziendale AND fr.id_fasi_di_processo = fp.id_fasi_di_processo)
-WHERE pa.id_processo_aziendale = :id_processo_aziendale');
+WHERE pa.id_processo_aziendale = " . $id_processo_aziendale);
         //new \yii\db\Query()
         //->from('processo_aziendale')
         //->innerJoin('processo_innovativo', 'processo_aziendale.id_processo_innovativo = processo_innovativo.id_processo_innovativo')
@@ -280,9 +280,7 @@ WHERE pa.id_processo_aziendale = :id_processo_aziendale');
         //->andWhere('fase_reale.id_fasi_di_processo = fasi_di_processo.id_fasi_di_processo')
         //->where(['processo_aziendale.id_processo_aziendale' => $id_processo_aziendale])
         //->all();
-        $count = Yii::$app->db->createCommand($sql)->queryScalar(array(
-            ':id_processo_aziendale' => $id_processo_aziendale
-        ));
+        $count = Yii::$app->db->createCommand($sql)->queryScalar(array(':id_processo_aziendale' => $id_processo_aziendale));
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
             'totalCount' => $count
