@@ -265,13 +265,14 @@ class PaController extends Controller
     public function actionView($id_processo_aziendale)
     {
 
-        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
+        $count = Yii::$app->db->createCommand('   SELECT COUNT(*) FROM user WHERE status=:status', [':status' => 1])->queryScalar();
         $sql = (new \yii\db\Query())
             ->from('processo_aziendale')
             ->innerJoin('processo_innovativo', 'processo_aziendale.id_processo_innovativo = processo_innovativo.id_processo_innovativo')
             ->innerJoin('fasi_di_processo', 'fasi_di_processo.id_processo_innovativo = processo_innovativo.id_processo_innovativo')
-            ->leftJoin('fase_reale', ['fase_reale.id_processo_aziendale = processo_aziendale.id_processo_aziendale' and 'fase_reale.id_fasi_di_processo = fasi_di_processo.id_fasi_di_processo'])
-            ->where(['id_processo_aziendale' => $id_processo_aziendale])
+            ->leftJoin('fase_reale', 'fase_reale.id_processo_aziendale = processo_aziendale.id_processo_aziendale')
+            ->andWhere('fase_reale.id_fasi_di_processo = fasi_di_processo.id_fasi_di_processo')
+            ->where(['processo_aziendale.id_processo_aziendale' => $id_processo_aziendale])
             ->all();
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
