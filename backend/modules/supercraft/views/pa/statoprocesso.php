@@ -50,8 +50,8 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) {
                     if ($action === 'view') {
-                            $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
-                        return $model1->data_inizio != '' ? $url : '';
+                        $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
+                        return $model1['data_inizio'] != '' ? $url : Yii::$app->user->setFlash('error', "Prima di poter visualizzare il processo lo devi creare!");;
                     }
                 }
             ],
