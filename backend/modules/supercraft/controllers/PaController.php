@@ -273,7 +273,7 @@ INNER JOIN fasi_di_processo fp ON (fp.id_processo_innovativo = pi.id_processo_in
 LEFT JOIN fase_reale fr ON (fr.id_processo_aziendale = pa.id_processo_aziendale AND fr.id_fasi_di_processo = fp.id_fasi_di_processo)
 WHERE pa.id_processo_aziendale =" . $id_processo_aziendale);
 
-        $count = Yii::$app->db->createCommand($sql)->queryScalar(array(':id_processo_aziendale' => $id_processo_aziendale));
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM fasi_di_processo WHERE id_processo_innovativo =' . $this->findModel($id_processo_aziendale)->id_processo_innovativo);
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
             'totalCount' => $count
