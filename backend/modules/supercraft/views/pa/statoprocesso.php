@@ -50,9 +50,8 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) {
                     if ($action === 'view') {
-                        print
                             $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
-                        return $model1->data_inizio != null ? $url : '';
+                        return $model1->data_inizio != '' ? $url : '';
                     }
                 }
             ],
