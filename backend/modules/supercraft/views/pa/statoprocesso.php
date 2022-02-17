@@ -40,7 +40,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
     GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn'],
 
             'nome_processo',
             'data_inizio',
