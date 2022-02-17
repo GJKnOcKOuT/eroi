@@ -49,10 +49,10 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) {
-		    print_r($model1);
                     if ($action === 'view') {
-                        $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
-                        return $url;
+                        print
+                            $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
+                        return $model1->data_inizio != null ? $url : '';
                     }
                 }
             ],

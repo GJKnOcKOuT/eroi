@@ -284,6 +284,25 @@ WHERE pa.id_processo_aziendale =" . $id_processo_aziendale);
         ]);
     }
 
+    public function actionViewazioni($id_processo_aziendale)
+    {
+
+
+        $sql = ("SELECT *
+FROM attivita_reale 
+WHERE id_fase_ =" . $id_processo_aziendale);
+
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM fasi_di_processo WHERE id_processo_innovativo =' . $this->findModel($id_processo_aziendale)->id_processo_innovativo);
+        $dataProvider = new SqlDataProvider([
+            'sql' => $sql,
+            'totalCount' => $count
+        ]);
+        return $this->render('statoprocesso', [
+            'dataProvider' => $dataProvider,
+            'model' => $this->findModel($id_processo_aziendale),
+        ]);
+    }
+
     /**
      * Creates a new ProcessoAziendale model.
      * If creation is successful, the browser will be redirected to the 'view' page.
