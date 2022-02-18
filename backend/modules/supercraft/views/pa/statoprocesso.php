@@ -42,7 +42,11 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'fase',
+            [
+                'header' => 'Fase',
+                'attribute' => 'nome_processo',
+                'format' => 'text',
+            ],
             'data_inizio',
             'data_fine',
 
