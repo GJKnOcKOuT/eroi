@@ -38,7 +38,7 @@ class FasiDiProcesso extends \yii\db\ActiveRecord
         return [
             [['id_processo_innovativo', 'id_fase'], 'required'],
             [['id_processo_innovativo', 'id_fase'], 'integer'],
-            [['nome_processo'], 'string'],
+            [['nome_processo' => 'Fase'], 'string'],
             [['id_fase'], 'exist', 'skipOnError' => true, 'targetClass' => Fase::className(), 'targetAttribute' => ['id_fase' => 'id_fase']],
             [['id_processo_innovativo'], 'exist', 'skipOnError' => true, 'targetClass' => ProcessoInnovativo::className(), 'targetAttribute' => ['id_processo_innovativo' => 'id_processo_innovativo']],
         ];

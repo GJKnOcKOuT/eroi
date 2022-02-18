@@ -42,7 +42,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'nome_processo',
+            'fase',
             'data_inizio',
             'data_fine',
 
@@ -51,7 +51,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'urlCreator' => function ($action, $model1, $key, $index) {
                     if ($action === 'view') {
                         $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
-                        return $model1['data_inizio'] != '' ? $url : Yii::$app->user->setFlash('error', "Prima di poter visualizzare il processo lo devi creare!");;
+                        return $model1['data_inizio'] != '' ? $url : Yii::$app->session->setFlash('error', "Prima di poter visualizzare il processo lo devi creare!");
                     }
                 }
             ],
