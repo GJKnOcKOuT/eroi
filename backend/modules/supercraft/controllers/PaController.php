@@ -262,7 +262,7 @@ class PaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id_processo_aziendale)
+    public function actionView($id_processo_aziendale, $fl)
     {
 
 
@@ -282,6 +282,7 @@ WHERE pa.id_processo_aziendale =" . $id_processo_aziendale);
             'dataProvider' => $dataProvider,
             'model' => $this->findModel($id_processo_aziendale),
             'id_processo_aziendale' => $id_processo_aziendale,
+            'fl' => $fl,
         ]);
     }
 
