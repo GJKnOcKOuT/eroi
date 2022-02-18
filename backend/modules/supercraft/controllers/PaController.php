@@ -281,18 +281,19 @@ WHERE pa.id_processo_aziendale =" . $id_processo_aziendale);
         return $this->render('statoprocesso', [
             'dataProvider' => $dataProvider,
             'model' => $this->findModel($id_processo_aziendale),
+            'id_processo_aziendale' => $id_processo_aziendale,
         ]);
     }
 
-    public function actionViewazioni($id_processo_aziendale)
+    public function actionViewazioni($id_processo_aziendale, $id_fase_reale)
     {
 
 
         $sql = ("SELECT *
 FROM attivita_reale 
-WHERE id_fase_ =" . $id_processo_aziendale);
+WHERE id_processo_aziendale =" . $id_processo_aziendale . " AND id_fase_reale =" . $id_fase_reale);
 
-        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM fasi_di_processo WHERE id_processo_innovativo =' . $this->findModel($id_processo_aziendale)->id_processo_innovativo);
+        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM attivita_reale WHERE id_processo_aziendale =' . $id_processo_aziendale . ' AND id_fase_reale =' . $id_fase_reale);
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
             'totalCount' => $count

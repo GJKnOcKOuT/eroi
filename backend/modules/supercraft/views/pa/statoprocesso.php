@@ -10,7 +10,6 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $controller backend\modules\supercraft\controllers\PaController */
-/* @var $this yii\web\View */
 /* @var $searchModel backend\modules\supercraft\models\PaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $this yii\web\View */
@@ -18,8 +17,8 @@ use yii\grid\GridView;
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl = 0 */
-$this->title = $model->nome;
-$this->params['breadcrumbs'][] = $this->title;
+/* @var $id_processo_aziendale */
+$this->title = 'Stato processo';
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
 
@@ -40,6 +39,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
     GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
+
             ['class' => 'yii\grid\SerialColumn'],
 
             [
@@ -52,10 +52,10 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view}',
-                'urlCreator' => function ($action, $model1, $key, $index) {
+                'urlCreator' => function ($action, $model1, $key, $index) use ($id_processo_aziendale) {
                     if ($action === 'view') {
-                        $url = 'view?id_processo_reale=' . $model1['id_processo_reale'];
-                        return $model1['data_inizio'] != '' ? $url : Yii::$app->session->setFlash('error', "Prima di poter visualizzare il processo lo devi creare!");
+                        $url = 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $id_processo_aziendale;
+                        return $model1['data_inizio'] != '' ? $url : 'view?id_processo_aziendale=' . $id_processo_aziendale . '&fl=1';
                     }
                 }
             ],
