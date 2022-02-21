@@ -341,7 +341,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         ]);
     }
 
-    public function actionCreateattivita($id_fase_reale)
+    public function actionCreateattivita($id_fase_reale, $id_processo_aziendale)
     {
         $model = new AttivitaReale();
 
