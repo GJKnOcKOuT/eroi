@@ -25,12 +25,11 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 <div class="processo-aziendale-index">
 
     <p>
-        <?php if ($fl === 1) Yii::$app->session->setFlash('error', 'Devi prima creare la fase per visualizzarne il contenuto!') ?>
         <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Crea una attività', ['createattivita', 'id_processo_aziendale' => $id_processo_aziendale,], ['class' => 'btn btn-success rosso']) ?>
+        <?= Html::a('Crea una attività', ['createattivita', 'fase_reale_id_fase_reale' => $dataProvider['fase_reale_id_fase_reale']], ['class' => 'btn btn-success rosso']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

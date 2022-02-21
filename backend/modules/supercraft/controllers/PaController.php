@@ -301,7 +301,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             'sql' => $sql,
             'totalCount' => $count
         ]);
-        return $this->render('statoprocesso', [
+        return $this->render('statofase', [
             'dataProvider' => $dataProvider,
             'model' => $this->findModel($id_processo_aziendale),
         ]);
@@ -329,7 +329,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         ]);
     }
 
-    public function actionCreateattivita($id_processo_aziendale, $id_fase_reale)
+    public function actionCreateattivita($id_fase_reale)
     {
         $model = new AttivitaReale();
 
