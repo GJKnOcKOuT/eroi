@@ -25,7 +25,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 <div class="processo-aziendale-index">
 
     <p>
-        <?php if ($fl === 1) Yii::$app->session->setFlash('error', 'Devi prima creare la fase per visualizzarne il contenuto!') ?>
+        <?php if ($fl == 1) Yii::$app->session->setFlash('error', 'Devi prima creare la fase per visualizzarne il contenuto!') ?>
         <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
@@ -54,7 +54,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) use ($id_processo_aziendale) {
                     if ($action === 'view') {
-                        $url = 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $id_processo_aziendale;
+                        $url = 'viewazioni?id_fase_reale=' . $model1['id_fase_reale'] . '&id_processo_aziendale=' . $id_processo_aziendale;
                         return $model1['data_inizio'] != '' ? $url : 'view?id_processo_aziendale=' . $id_processo_aziendale . '&fl=1';
                     }
                 }
