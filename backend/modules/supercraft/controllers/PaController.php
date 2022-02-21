@@ -293,7 +293,8 @@ WHERE pa.id_processo_aziendale =" . $id_processo_aziendale);
 
         $sql = ("SELECT *
 FROM attivita_reale 
-WHERE id_fase_reale =" . $id_fase_reale);
+WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
+
 
         $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM attivita_reale WHERE id_processo_aziendale =' . $id_processo_aziendale . ' AND id_fase_reale =' . $id_fase_reale);
         $dataProvider = new SqlDataProvider([
