@@ -3,6 +3,7 @@
 namespace backend\modules\supercraft\controllers;
 
 use backend\modules\supercraft\models\AttivitaReale;
+use backend\modules\supercraft\models\FaseReale;
 use backend\modules\supercraft\models\ProcessoAziendale;
 use backend\modules\supercraft\models\PaSearch;
 use backend\modules\supercraft\models\query;
@@ -304,7 +305,18 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         return $this->render('statofase', [
             'dataProvider' => $dataProvider,
             'model' => $this->findModel($id_processo_aziendale),
+            'fase_reale' => $id_fase_reale
         ]);
+    }
+
+    public function actionFinefase($id_fase_reale)
+    {
+        $model = FaseReale::findOne($id_fase_reale);
+        $model->data_fine = date("Y-m-d H:i:s");
+        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id_processo_aziendale' => $model->id_processo_aziendale, 'fl' => 0]);
+        }
+        return null;
     }
 
     /**
