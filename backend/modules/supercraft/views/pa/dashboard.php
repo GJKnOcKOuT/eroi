@@ -54,10 +54,12 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 
             ['class' => 'yii\grid\ActionColumn',
                 'urlCreator' => function ($action, $model1, $key, $index) {
+
                     if ($action === 'view') {
-                        $url = 'view?id_processo_aziendale=' . $model1['id_processo_aziendale'];
+                        $url = 'view?id_processo_aziendale=' . $model1['id_processo_aziendale'] . '&fl=0';
                         return $url;
                     }
+
 
                     if ($action === 'update') {
                         $url = 'update?id_processo_aziendale=' . $model1['id_processo_aziendale'];
