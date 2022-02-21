@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
-$this->title = 'Crea ';
+$this->title = 'Crea Attività';
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

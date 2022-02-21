@@ -2,6 +2,7 @@
 
 namespace backend\modules\supercraft\controllers;
 
+use backend\modules\supercraft\models\AttivitaReale;
 use backend\modules\supercraft\models\ProcessoAziendale;
 use backend\modules\supercraft\models\PaSearch;
 use backend\modules\supercraft\models\query;
@@ -323,6 +324,25 @@ WHERE id_processo_aziendale =" . $id_processo_aziendale . " AND id_fase_reale ="
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionCreateattivita($id_processo_aziendale, $id_fase_reale)
+    {
+        $model = new AttivitaReale();
+
+        if (Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['viewazioni', 'id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $id_fase_reale]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+        $model['id_processo_aziendale'] = $id_processo_aziendale;
+        $model['id_fase_reale'] = $id_fase_reale;
+        $model['data_inizio'] = date("Y-m-d H:i:s");
+        return $this->render('createattivita', [
             'model' => $model,
         ]);
     }

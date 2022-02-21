@@ -1,5 +1,6 @@
 <?php
 
+use backend\modules\supercraft\models\FaseReale;
 use backend\modules\supercraft\models\FasiDiProcesso;
 use backend\modules\supercraft\models\ProcessoInnovativo;
 use yii\data\SqlDataProvider;
@@ -11,9 +12,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $fasi FasiDiProcesso */
 
-$pi = ProcessoInnovativo::find()
-    ->select(['nome'])
-    ->indexBy('id_processo_innovativo')
+$fr = FaseReale::find()
+    ->select(['descrizione'])
+    ->indexBy('id_fase_reale')
     ->column();
 
 ?>
@@ -22,21 +23,10 @@ $pi = ProcessoInnovativo::find()
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_processo_innovativo')->dropdownList(
-        $pi,
-        ['prompt' => 'Scegli il tipo di processo']
+    <?= $form->field($model, 'id_fase_reale')->dropdownList(
+        $fr,
+        ['prompt' => "Scegli l'azione che vuoi creare"]
     ); ?>
-
-    <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
-
-
-
-
-
-
-
-    <?= $form->field($model, 'descrizione')->textarea(['rows' => 6]) ?>
-
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

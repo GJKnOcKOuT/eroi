@@ -9,7 +9,7 @@ $this->title = 'SUPERCraft';
     <div class="jumbotron text-center bg-transparent">
         <h1 class="display-4">Benvenuto!</h1>
 
-        <p><a class="btn btn-lg btn-success" href="/supercraft/pa/index">Visualizza i processi aziendali!</a></p>
+        <p><a class="btn btn-lg btn-success" href="/supercraft/pa/dashboard">Visualizza i processi aziendali!</a></p>
     </div>
 
     <div class="body-content">
@@ -27,7 +27,7 @@ $this->title = 'SUPERCraft';
 
                 <p>Qui puoi ricercare un processo aziendale</p>
 
-                <p><a class="btn btn-outline-secondary" href="/supercraft/pa/index">Ricerca &raquo;</a></p>
+                <p><a class="btn btn-outline-secondary" href="/supercraft/pa/dashboard">Ricerca &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Documentazione</h2>

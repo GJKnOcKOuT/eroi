@@ -26,10 +26,11 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 
     <p>
         <?php if ($fl === 1) Yii::$app->session->setFlash('error', 'Devi prima creare la fase per visualizzarne il contenuto!') ?>
-        <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Crea una attività', ['createattivita', 'id_processo_aziendale' => $id_processo_aziendale,], ['class' => 'btn btn-success rosso']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -43,8 +44,8 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
             ['class' => 'yii\grid\SerialColumn'],
 
             [
-                'header' => 'Fase',
-                'attribute' => 'nome_processo',
+                'header' => 'Attivita',
+                'attribute' => 'descrizione',
                 'format' => 'text',
             ],
             'data_inizio',
