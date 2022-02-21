@@ -30,9 +30,8 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
         <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?php if ((FaseReale::findOne($fase_reale)->data_fine) == null) Html::a('Crea una attività', ['createattivita', 'fase_reale_id_fase_reale' => $fase_reale, $model->id_processo_aziendale], ['class' => 'btn btn-success rosso']) ?>
-        <?php if ((FaseReale::findOne($fase_reale)->data_fine) != '') {
-        } else Html::a('Fine Fase', ['finefase', 'fase_reale_id_fase_reale' => $fase_reale], ['class' => 'btn btn-danger rosso']) ?>
+        <?php if ((FaseReale::findOne($fase_reale)->data_fine) == '') echo Html::a('Crea una attività', ['createattivita', 'id_fase_reale' => $fase_reale, 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-success rosso']) ?>
+        <?php if ((FaseReale::findOne($fase_reale)->data_fine) == '') echo Html::a('Fine Fase', ['finefase', 'id_fase_reale' => $fase_reale], ['class' => 'btn btn-danger rosso']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
