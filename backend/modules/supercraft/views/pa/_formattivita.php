@@ -1,5 +1,6 @@
 <?php
 
+use backend\modules\supercraft\models\AttivitaReale;
 use backend\modules\supercraft\models\FaseReale;
 use backend\modules\supercraft\models\FasiDiProcesso;
 use backend\modules\supercraft\models\ProcessoInnovativo;
@@ -12,8 +13,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $fasi FasiDiProcesso */
 
-$fr = FaseReale::find()
+$fr = AttivitaReale::find()
     ->select(['descrizione'])
+    ->where(['fase_reale_id_fase_reale', $model['fase_reale_id_fase_reale']])
     ->indexBy('id_fase_reale')
     ->column();
 
