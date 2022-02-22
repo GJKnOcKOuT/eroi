@@ -1,6 +1,8 @@
 <?php
 
 use backend\modules\supercraft\models\AttivitaReale;
+use backend\modules\supercraft\models\ConfigurazioneModuliPerFase;
+use backend\modules\supercraft\models\Fase;
 use backend\modules\supercraft\models\FaseReale;
 use backend\modules\supercraft\models\FasiDiProcesso;
 use backend\modules\supercraft\models\ProcessoInnovativo;
@@ -13,10 +15,11 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $fasi FasiDiProcesso */
 
-$fr = AttivitaReale::find()
+$fase = Fase::findOne(FasiDiProcesso::findOne(FaseReale::findOne($model['fase_reale_id_fase_reale'])->id_fasi_di_processo));
+$cmf = ConfigurazioneModuliPerFase::find()
     ->select(['descrizione'])
-    ->where(['fase_reale_id_fase_reale', $model['fase_reale_id_fase_reale']])
-    ->indexBy('id_fase_reale')
+    ->where(['=', 'id_fase', $fase])
+    ->indexBy('id_modulo_eroi')
     ->column();
 
 ?>
@@ -26,7 +29,7 @@ $fr = AttivitaReale::find()
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'id_fase_reale')->dropdownList(
-        $fr,
+        $cmf,
         ['prompt' => "Scegli l'azione che vuoi creare"]
     ); ?>
 
