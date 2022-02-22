@@ -3,9 +3,11 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\supercraft\models\ProcessoAziendale */
+/* @var $model backend\modules\supercraft\models\AttivitaReale */
 
 $this->title = 'Crea Attività';
+$this->params['breadcrumbs'][] = ['label' => 'Attivita Reale', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="processo-aziendale-create">
 

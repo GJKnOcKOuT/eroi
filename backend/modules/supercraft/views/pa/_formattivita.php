@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 /* @var $fasi FasiDiProcesso */
 
-$fase = Fase::findOne(FasiDiProcesso::findOne(FaseReale::findOne($model['fase_reale_id_fase_reale'])->id_fasi_di_processo));
+$fase = FasiDiProcesso::findOne(FaseReale::findOne($model['fase_reale_id_fase_reale'])->id_fasi_di_processo)->id_fase;
 $cmf = ConfigurazioneModuliPerFase::find()
     ->select(['descrizione'])
     ->where(['=', 'id_fase', $fase])
@@ -24,17 +24,17 @@ $cmf = ConfigurazioneModuliPerFase::find()
 
 ?>
 
-<div class="processo-aziendale-form">
+<div class="attivita-reale-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_fase_reale')->dropdownList(
+    <?= $form->field($model, 'id_modulo_eroi')->dropdownList(
         $cmf,
         ['prompt' => "Scegli l'azione che vuoi creare"]
     ); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Salva', ['class' => 'btn btn-success']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 
