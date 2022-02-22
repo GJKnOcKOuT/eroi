@@ -6,14 +6,12 @@ use yii\helpers\Html;
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
 $this->title = 'Crea Attività';
-$this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="processo-aziendale-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= $this->render('_formattivita', [
         'model' => $model,
     ]) ?>
 

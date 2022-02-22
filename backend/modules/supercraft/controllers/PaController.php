@@ -352,8 +352,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         } else {
             $model->loadDefaultValues();
         }
-        $model['id_processo_aziendale'] = $id_processo_aziendale;
-        $model['id_fase_reale'] = $id_fase_reale;
+        $model['fase_reale_id_fase_reale'] = $id_fase_reale;
         $model['data_inizio'] = date("Y-m-d H:i:s");
         return $this->render('createattivita', [
             'model' => $model,
