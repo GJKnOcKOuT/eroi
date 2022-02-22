@@ -34,6 +34,7 @@ $cmf = ConfigurazioneModuliPerFase::find()
     ); ?>
 
     <div class="form-group">
+        <?php print_r($model) ?>
         <?= Html::submitButton('Salva', ['class' => 'btn btn-success']) ?>
     </div>
     <?php ActiveForm::end(); ?>
