@@ -7,7 +7,6 @@ use yii\helpers\Html;
 
 $this->title = 'Create Processo Aziendale';
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="processo-aziendale-create">
 

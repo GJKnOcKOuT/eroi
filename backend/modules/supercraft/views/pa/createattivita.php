@@ -6,8 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\modules\supercraft\models\AttivitaReale */
 
 $this->title = 'Crea Attività';
-$this->params['breadcrumbs'][] = ['label' => 'Attivita Reale', 'url' => ['pa/dashboard']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Attivita Reale', 'url' => ['pa/dashboard/']];
 ?>
 <div class="processo-aziendale-create">
 

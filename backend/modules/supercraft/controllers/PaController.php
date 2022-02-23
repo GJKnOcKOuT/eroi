@@ -341,17 +341,21 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         ]);
     }
 
+    /**
+     * Creates a new ProcessoAziendale model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
     public function actionCreateattivita($id_fase_reale, $id_processo_aziendale)
     {
         $model = new AttivitaReale();
 
         if (Yii::$app->request->isPost) {
-            print_r($model);
+
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['viewazioni', 'id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $id_fase_reale]);
-            }
+            } else print_r($model);
         } else {
-            print_r($model);
             $model->loadDefaultValues();
         }
         $model['data_fine'] = '';
