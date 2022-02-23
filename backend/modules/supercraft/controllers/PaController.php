@@ -347,6 +347,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
 
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                print_r($model);
                 return $this->redirect(['viewazioni', 'id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $id_fase_reale]);
             }
         } else {
