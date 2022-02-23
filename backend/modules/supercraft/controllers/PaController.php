@@ -330,7 +330,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
 
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id_processo_aziendale' => $model->id_processo_aziendale]);
+                return $this->redirect(['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale, 'fl' => 0]);
             }
         } else {
             $model->loadDefaultValues();
@@ -346,14 +346,15 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = new AttivitaReale();
 
         if (Yii::$app->request->isPost) {
+            print_r($model);
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                print_r($model);
                 return $this->redirect(['viewazioni', 'id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $id_fase_reale]);
             }
         } else {
+            print_r($model);
             $model->loadDefaultValues();
         }
-        $model['data_fine'] = null;
+        $model['data_fine'] = '';
         $model['fase_reale_id_fase_reale'] = $id_fase_reale;
         $model['data_inizio'] = date("Y-m-d H:i:s");
         return $this->render('createattivita', [
