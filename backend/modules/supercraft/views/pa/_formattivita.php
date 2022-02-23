@@ -33,6 +33,8 @@ $cmf = ConfigurazioneModuliPerFase::find()
         ['prompt' => "Scegli l'azione che vuoi creare"]
     ); ?>
 
+    <?= $form->field($model, 'descrizione')->textarea(['rows' => 6]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Salva', ['class' => 'btn btn-success']) ?>
     </div>
