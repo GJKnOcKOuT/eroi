@@ -4,6 +4,8 @@ namespace backend\modules\supercraft\controllers;
 
 use backend\modules\supercraft\models\AttivitaReale;
 use backend\modules\supercraft\models\FaseReale;
+use backend\modules\supercraft\models\FasiDiProcesso;
+use backend\modules\supercraft\models\PadreDi;
 use backend\modules\supercraft\models\ProcessoAziendale;
 use backend\modules\supercraft\models\PaSearch;
 use backend\modules\supercraft\models\query;
@@ -314,10 +316,16 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
     {
         $model = FaseReale::findOne($id_fase_reale);
         $model->data_fine = date("Y-m-d H:i:s");
-        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_processo_aziendale' => $model->id_processo_aziendale, 'fl' => 0]);
-        }
-        return null;
+        $model->save();
+        $figlio = PadreDi::findBySql('SELECT * FROM padre_di WHERE id_padre=' . $model->id_fasi_di_processo);
+        $figlio = $figlio['id_figlio'];
+        $figlio = FasiDiProcesso::findOne($figlio);
+        $nuova_fase = new FaseReale();
+        $nuova_fase->data_inizio = date("Y-m-d H:i:s");
+        $nuova_fase->descrizione = $figlio['descrizione'];
+        $nuova_fase->processoAziendale = $model->processoAziendale;
+        $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
+        $nuova_fase->save();
     }
 
     /**
@@ -355,7 +363,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model['data_inizio'] = date("Y-m-d H:i:s");
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['viewazioni', 'id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $id_fase_reale]);
+                return $this->redirect(['viewazioni', 'id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $id_fase_reale, 'fl' => 0]);
             }
         } else {
             $model->loadDefaultValues();
