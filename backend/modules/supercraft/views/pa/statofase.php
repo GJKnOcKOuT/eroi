@@ -9,6 +9,7 @@ use backend\modules\supercraft\models\FaseReale;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $controller backend\modules\supercraft\controllers\PaController */
 /* @var $searchModel backend\modules\supercraft\models\PaSearch */
@@ -60,7 +61,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                     }
                     if ($action === 'delete') {
                         $model1['data_fine'] = date("Y-m-d H:i:s");
-                        return $this;
+                        return Url::current();
                     }
                 }
             ],
