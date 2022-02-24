@@ -57,8 +57,6 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view} {delete}',
                 'buttons' => [
                     'delete' => function ($url, $model) {
-                        $model['data_fine'] = date("Y-m-d H:i:s");
-                        $model->update();
                         return Html::button('<span class="fas fa-calendar-check"></span>', ['class' => 'btn btn-default btn-xs']);
                     }
                 ],
@@ -67,7 +65,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                         return 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
                     }
                     if ($action === 'delete') {
-                        return Url::current();
+                        return 'fineattivita?id_attivita_reale=' . $model1['id_attivita_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
                     }
                 }
             ],
