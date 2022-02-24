@@ -54,7 +54,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
             'data_fine',
 
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view}', '{delete}',
+                'template' => '{view} {delete}',
                 'urlCreator' => function ($action, $model1, $key, $index) use ($model) {
                     if ($action === 'view') {
                         return 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
