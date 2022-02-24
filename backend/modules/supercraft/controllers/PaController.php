@@ -288,7 +288,7 @@ WHERE pa.id_processo_aziendale =" . $id_processo_aziendale);
         ]);
     }
 
-    public function actionViewazioni($id_processo_aziendale, $id_fase_reale)
+    public function actionViewazioni($id_processo_aziendale, $id_fase_reale, $fl)
     {
 
 
@@ -305,7 +305,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         return $this->render('statofase', [
             'dataProvider' => $dataProvider,
             'model' => $this->findModel($id_processo_aziendale),
-            'fase_reale' => $id_fase_reale
+            'fase_reale' => $id_fase_reale,
+            'fl' => $fl
         ]);
     }
 
@@ -370,7 +371,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = AttivitaReale::findOne($id_attivita_reale);
         $model['data_fine'] = date("Y-m-d H:i:s");
         $model->save();
-        return Yii::$app->runAction('pa/viewazioni', ['id_processo_aziendale' => $id_processo_aziendale, 'id_fase_reale' => $model['fase_reale_id_fase_reale']]);
+        return $this->redirect($this->actionViewazioni($id_processo_aziendale, $model['fase_reale_id_fase_reale']));
     }
 
     /**
@@ -385,7 +386,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = $this->findModel($id_processo_aziendale);
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('viewattivita?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale']);
+            return $this->redirect(['viewattivita?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale']]);
         }
 
         return $this->render('update', [
