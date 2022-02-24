@@ -27,6 +27,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 <div class="processo-aziendale-index">
 
     <p>
+        <?php if ($fl == 1) Yii::$app->session->setFlash('error', "l'attività si è gia conclusa!") ?>
         <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
@@ -60,7 +61,10 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                         return 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
                     }
                     if ($action === 'delete') {
-                        return 'fineattivita?id_attivita_reale=' . $model1['id_attivita_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
+                        if ($model1['data_fine'] == '') $url = 'fineattivita?id_attivita_reale=' . $model1['id_attivita_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
+                        else $url = 'viewazioni?id_processo_aziendale=' . $model->id_processo_aziendale . '&id_fase_reale=' . $model1['fase_reale_id_fase_reale'] . '&fl=1';
+
+                        return $url;
                     }
                 }
             ],
