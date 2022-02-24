@@ -370,7 +370,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = AttivitaReale::findOne($id_attivita_reale);
         $model['data_fine'] = date("Y-m-d H:i:s");
         $model->save();
-        $this->redirect($this->actionViewazioni($id_processo_aziendale, $model['fase_reale_id_fase_reale']));
+        return $this->redirect($this->actionViewazioni($id_processo_aziendale, $model['fase_reale_id_fase_reale']));
     }
 
     /**
@@ -385,7 +385,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = $this->findModel($id_processo_aziendale);
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_processo_aziendale' => $model->id_processo_aziendale]);
+            return $this->redirect('viewattivita?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale']);
         }
 
         return $this->render('update', [

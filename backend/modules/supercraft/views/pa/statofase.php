@@ -55,11 +55,6 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {delete}',
-                'buttons' => [
-                    'delete' => function ($url, $model) {
-                        return Html::button('<span class="fas fa-calendar-check"></span>', ['class' => 'btn btn-default btn-xs']);
-                    }
-                ],
                 'urlCreator' => function ($action, $model1, $key, $index) use ($model) {
                     if ($action === 'view') {
                         return 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
