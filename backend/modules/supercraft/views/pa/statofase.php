@@ -58,7 +58,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view} {delete}',
                 'urlCreator' => function ($action, $model1, $key, $index) use ($model) {
                     if ($action === 'view') {
-                        return 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
+                        return 'viewazioni?id_processo_reale=' . $model1['id_processo_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0';
                     }
                     if ($action === 'delete') {
                         if ($model1['data_fine'] == '') $url = 'fineattivita?id_attivita_reale=' . $model1['id_attivita_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;

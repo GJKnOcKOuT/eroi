@@ -54,7 +54,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) use ($id_processo_aziendale) {
                     if ($action === 'view') {
-                        $url = 'viewazioni?id_fase_reale=' . $model1['id_fase_reale'] . '&id_processo_aziendale=' . $id_processo_aziendale;
+                        $url = 'viewazioni?id_fase_reale=' . $model1['id_fase_reale'] . '&id_processo_aziendale=' . $id_processo_aziendale . '&fl=0';
                         return $model1['data_inizio'] != '' ? $url : 'view?id_processo_aziendale=' . $id_processo_aziendale . '&fl=1';
                     }
                 }

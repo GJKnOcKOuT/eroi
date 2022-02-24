@@ -371,7 +371,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = AttivitaReale::findOne($id_attivita_reale);
         $model['data_fine'] = date("Y-m-d H:i:s");
         $model->save();
-        return $this->redirect($this->actionViewazioni($id_processo_aziendale, $model['fase_reale_id_fase_reale']));
+        return $this->redirect(['viewattivita?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale'] . '&fl=0']);
     }
 
     /**
