@@ -323,9 +323,10 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $nuova_fase = new FaseReale();
         $nuova_fase->data_inizio = date("Y-m-d H:i:s");
         $nuova_fase->descrizione = $figlio['descrizione'];
-        $nuova_fase->processoAziendale = $model->processoAziendale;
+        $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
         $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
         $nuova_fase->save();
+        return $this->redirect(['viewattivita?id_processo_aziendale=' . $model->id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale'] . '&fl=0']);
     }
 
     /**
