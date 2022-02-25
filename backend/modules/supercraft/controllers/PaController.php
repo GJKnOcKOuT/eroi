@@ -324,7 +324,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $nuova_fase->descrizione = $figlio['nome_processo'];
         $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
         $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
-        if ($nuova_fase->save()) $this->redirect(['viewattivita?id_processo_aziendale=' . $model->id_processo_aziendale . '&id_fase_reale=' . $model['id_fase_reale'] . '&fl=0']);
+        if ($nuova_fase->save()) $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
         print_r($figlio);
     }
 
