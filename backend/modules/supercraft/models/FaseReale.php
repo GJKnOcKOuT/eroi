@@ -38,7 +38,6 @@ class FaseReale extends \yii\db\ActiveRecord
             [['id_processo_aziendale', 'id_fasi_di_processo'], 'required'],
             [['id_processo_aziendale', 'id_fasi_di_processo'], 'integer'],
             [['descrizione'], 'string', 'max' => 1000],
-            [['descrizione'], 'unique'],
             [['id_fasi_di_processo'], 'exist', 'skipOnError' => true, 'targetClass' => FasiDiProcesso::className(), 'targetAttribute' => ['id_fasi_di_processo' => 'id_fasi_di_processo']],
             [['id_processo_aziendale'], 'exist', 'skipOnError' => true, 'targetClass' => ProcessoAziendale::className(), 'targetAttribute' => ['id_processo_aziendale' => 'id_processo_aziendale']],
         ];
