@@ -46,11 +46,6 @@ class PaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => [
-                            'index',
-                            'captcha'
-
-                        ],
                         'roles' => ['ADMIN', 'VALIDATED_BASIC_USER']
                     ],
                 ],
