@@ -15,6 +15,8 @@ use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\SqlDataProvider;
 use yii\db\Exception;
+use yii\filters\AccessControl;
+use yii\filters\AccessRule;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,17 +37,31 @@ class PaController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => [
+                            'index',
+                            'captcha'
+
+                        ],
+                        'roles' => ['ADMIN', 'VALIDATED_BASIC_USER']
                     ],
                 ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post', 'get']
+                ]
             ]
-        );
+        ];
     }
 
     /**
