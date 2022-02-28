@@ -15,12 +15,12 @@ use yii\helpers\Url;
 /* @var $searchModel backend\modules\supercraft\models\PaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $this yii\web\View */
-/* @var $model backend\modules\supercraft\models\ProcessoAziendale */
+/* @var $model */
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl */
 /* @var $fase_reale */
-$this->title = 'Stato processo';
+$this->title = \backend\modules\supercraft\models\ProcessoAziendale::findOne($model->id_processo_aziendale)->nome . ' - ' . $model->descrizione . ' - Stato Azioni'; //TODO modificare anche gli altri titoli
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
 

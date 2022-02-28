@@ -329,6 +329,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $nuova_fase->descrizione = $figlio['nome_processo'];
         $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
         $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
+        //TODO Sistemare situazione multi fase
         if ($nuova_fase != null & $nuova_fase->save()) $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
         elseif ($nuova_fase == null & $figlio == null) {
             ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
@@ -386,7 +387,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = AttivitaReale::findOne($id_attivita_reale);
         $model['data_fine'] = date("Y-m-d H:i:s");
         $model->save();
-        return $this->redirect(['viewattivita?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale'] . '&fl=0']);
+        return $this->redirect(['viewazioni?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale'] . '&fl=0']);
     }
 
     /**
