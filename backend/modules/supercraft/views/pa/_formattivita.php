@@ -19,6 +19,7 @@ $fase = FasiDiProcesso::findOne(FaseReale::findOne($model['fase_reale_id_fase_re
 $cmf = ConfigurazioneModuliPerFase::find()
     ->select(['descrizione'])
     ->where(['=', 'id_fase', $fase])
+    ->andWhere(['=', 'ripetibile', true])
     ->indexBy('id_modulo_eroi')
     ->column();
 

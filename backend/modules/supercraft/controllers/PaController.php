@@ -124,7 +124,7 @@ class PaController extends Controller
         $sql = "SELECT *
                 FROM  processo_aziendale
                 WHERE 
-                      id_azienda = 1 AND (data_fine >= CURDATE() OR data_fine IS NULL)      
+                      id_azienda = 1 AND (data_fine > CURDATE() OR data_fine IS NULL)      
         ";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
@@ -143,10 +143,7 @@ class PaController extends Controller
     {
         $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
         $searchModel = new PaSearch();
-        $sql = "SELECT *
-                FROM  processo_aziendale
-                WHERE id_azienda = 1 AND data_fine <= CURRENT_DATE     
-        ";
+        $sql = $this->queryDataArchiviati();
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
             'totalCount' => $count
@@ -207,13 +204,12 @@ class PaController extends Controller
 
     private function queryDataInCorso()
     {
-        $time = new \DateTime('now');
-        $today = $time->format('Y-m-d');
+
         return processoAziendale::find()
             ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'data_fine', 'descrizione'])
             ->where("id_azienda = 1")
-            ->andWhere(['>=', 'data_fine', $today])
-            ->orWhere(['is', 'data_fine', new \yii\db\Expression('null')])
+            ->andWhere(['>', 'data_fine', date("Y-m-d H:i:s")])
+            ->orWhere(['=', 'data_fine', ''])
             ->asArray()
             ->all();
 
@@ -221,12 +217,10 @@ class PaController extends Controller
 
     private function queryDataArchiviati()
     {
-        $time = new \DateTime('now');
-        $today = $time->format('Y-m-d');
         return processoAziendale::find()
             ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'data_fine', 'descrizione'])
             ->where("id_azienda = 1")
-            ->andWhere(['<=', 'data_fine', $today])
+            ->andWhere(['<=', 'data_fine', date("Y-m-d H:i:s")])
             ->asArray()
             ->all();
 
@@ -324,8 +318,10 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $nuova_fase->descrizione = $figlio['nome_processo'];
         $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
         $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
-        if ($nuova_fase->save()) $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
-        print_r($figlio);
+        if ($nuova_fase != null & $nuova_fase->save()) $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
+        elseif ($nuova_fase == null & $figlio == null) {
+            ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
+        }
     }
 
     /**
@@ -394,7 +390,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = $this->findModel($id_processo_aziendale);
 
         if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['viewattivita?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale']]);
+            return $this->redirect(['viewazioni?id_processo_aziendale=' . $id_processo_aziendale . '&id_fase_reale=' . $model['fase_reale_id_fase_reale']]);
         }
 
         return $this->render('update', [

@@ -47,7 +47,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
             'nome',
             'id_azienda',
             'data_inizio',
-            //TODO AGGIUNGERE DATA_FINE SOLO NEL CASO SI STIA GUARDANDO I CASI ARCHIVIATI
+            'data_fine',
             'descrizione:ntext',
             //'copertina',
             //'id_fase_attuale',
