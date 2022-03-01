@@ -6,6 +6,7 @@
  */
 
 use backend\modules\supercraft\models\FaseReale;
+use backend\modules\supercraft\models\ProcessoAziendale;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -20,7 +21,7 @@ use yii\helpers\Url;
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl */
 /* @var $fase_reale */
-$this->title = \backend\modules\supercraft\models\ProcessoAziendale::findOne($model->id_processo_aziendale)->nome . ' - ' . $model->descrizione . ' - Stato Azioni'; //TODO modificare anche gli altri titoli
+$this->title = ProcessoAziendale::findOne($model->id_processo_aziendale)->nome . ' - ' . $model->descrizione . ' - Stato Azioni'; //TODO modificare anche gli altri titoli
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
 
@@ -28,10 +29,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
 
     <p>
         <?php if ($fl == 1) Yii::$app->session->setFlash('error', "l'attività si è gia conclusa!") ?>
-        <?= Html::a('I Miei progetti', ['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Opportunità', ['opportunita', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('In Corso', ['incorso', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Archiviati', ['archiviati', 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Torna indetro', ['statoprocesso', 'id_processo_aziendale' => $model->id_processo_aziendale, 'fl' => 0], ['class' => 'btn btn-primary']) ?>
         <?php if ((FaseReale::findOne($fase_reale)->data_fine) == '') echo Html::a('Crea una attività', ['createattivita', 'id_fase_reale' => $fase_reale, 'id_processo_aziendale' => $model->id_processo_aziendale], ['class' => 'btn btn-success rosso']) ?>
         <?php if ((FaseReale::findOne($fase_reale)->data_fine) == '') echo Html::a('Fine Fase', ['finefase', 'id_fase_reale' => $fase_reale], ['class' => 'btn btn-danger rosso']) ?>
     </p>

@@ -5,6 +5,7 @@
  * @Date 14/02/2022
  */
 
+use backend\modules\supercraft\models\ProcessoAziendale;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -18,7 +19,7 @@ use yii\grid\GridView;
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl */
 /* @var $id_processo_aziendale */
-$this->title = 'Stato processo';
+$this->title = 'Stato processo ' . ProcessoAziendale::findOne($id_processo_aziendale)->nome;
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
-$this->title = 'Create Processo Aziendale';
+$this->title = 'Crea un nuovo Processo Aziendale';
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];
 ?>
 <div class="processo-aziendale-create">

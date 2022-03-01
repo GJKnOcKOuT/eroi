@@ -1,15 +1,17 @@
 <?php
 
+use backend\modules\supercraft\models\ProcessoAziendale;
 use yii\helpers\Html;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
-$this->title = $model->id_processo_aziendale;
+$this->title = ProcessoAziendale::findOne($model->id_processo_aziendale)->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Processo Aziendales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
 ?>
 <div class="processo-aziendale-view">
 

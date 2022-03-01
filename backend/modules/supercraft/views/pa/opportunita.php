@@ -16,7 +16,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\supercraft\models\ProcessoAziendale */
 
-$this->title = 'Processi Aziendali';
+$this->title = 'Le Opportunità';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="processo-aziendale-index">

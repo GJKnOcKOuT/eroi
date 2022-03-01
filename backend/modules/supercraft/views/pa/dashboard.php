@@ -18,7 +18,7 @@ use yii\grid\GridView;
 /* @var $dashboard backend\modules\supercraft\models\dashboard */
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl = 0 */
-$this->title = 'Processi Aziendali';
+$this->title = 'I tuoi processi aziendali';
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
