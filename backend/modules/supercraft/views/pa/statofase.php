@@ -21,7 +21,7 @@ use yii\helpers\Url;
 /* @var $actionColum yii\grid\ActionColumn */
 /* @var $fl */
 /* @var $fase_reale */
-$this->title = ProcessoAziendale::findOne($model->id_processo_aziendale)->nome . ' - ' . $model->descrizione . ' - Stato Azioni'; //TODO modificare anche gli altri titoli
+$this->title = $model->nome . ' - ' . FaseReale::findOne($fase_reale)->descrizione . ' - Stato Azioni';
 $this->registerCssFile("/supercraftcss/css/dashboard.css");
 ?>
 

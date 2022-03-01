@@ -322,26 +322,30 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = FaseReale::findOne($id_fase_reale);
         $model->data_fine = date("Y-m-d H:i:s");
         $model->save();
-        $padre = PadreDi::findOne(['=', 'id_padre', $model->id_fasi_di_processo]);
-        $figlio = FasiDiProcesso::findOne($padre['id_figlio']);
-        $nuova_fase = new FaseReale();
-        $nuova_fase->data_inizio = date("Y-m-d H:i:s");
-        $nuova_fase->descrizione = $figlio['nome_processo'];
-        $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
-        $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
-        //TODO Sistemare situazione multi fase
-        if ($nuova_fase != null & $nuova_fase->save()) $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
-        elseif ($nuova_fase == null & $figlio == null) {
-            ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
+        $padre = PadreDi::findAll(['=', 'id_padre', $model->id_fasi_di_processo]);
+        $figlio = FasiDiProcesso::findAll($padre['id_figlio']);
+        foreach ($figlio as $child) {
+            $nuova_fase = new FaseReale();
+            $nuova_fase->data_inizio = date("Y-m-d H:i:s");
+            $nuova_fase->descrizione = $figlio['nome_processo'];
+            $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
+            $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
+            $nuova_fase->save();
+            if ($nuova_fase == '') {
+                ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
+                break;
+            }
         }
+        return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
     }
 
-    /**
+    /**a
      * Creates a new ProcessoAziendale model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public
+    function actionCreate()
     {
         $model = new ProcessoAziendale();
 
@@ -363,7 +367,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreateattivita($id_fase_reale, $id_processo_aziendale)
+    public
+    function actionCreateattivita($id_fase_reale, $id_processo_aziendale)
     {
         $model = new AttivitaReale();
         $model['data_fine'] = '';
@@ -382,7 +387,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         ]);
     }
 
-    public function actionFineattivita($id_attivita_reale, $id_processo_aziendale)
+    public
+    function actionFineattivita($id_attivita_reale, $id_processo_aziendale)
     {
         $model = AttivitaReale::findOne($id_attivita_reale);
         $model['data_fine'] = date("Y-m-d H:i:s");
@@ -397,7 +403,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id_processo_aziendale)
+    public
+    function actionUpdate($id_processo_aziendale)
     {
         $model = $this->findModel($id_processo_aziendale);
 
@@ -417,7 +424,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id_processo_aziendale)
+    public
+    function actionDelete($id_processo_aziendale)
     {
         try {
             $this->findModel($id_processo_aziendale)->delete();
@@ -436,7 +444,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
      * @return ProcessoAziendale the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id_processo_aziendale)
+    protected
+    function findModel($id_processo_aziendale)
     {
         if (($model = ProcessoAziendale::findOne($id_processo_aziendale)) !== null) {
             return $model;
