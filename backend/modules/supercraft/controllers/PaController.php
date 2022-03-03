@@ -198,11 +198,10 @@ class PaController extends Controller
 
     private function queryDataArchiviati()
     {
-        return processoAziendale::find()
-            ->where("id_azienda = 1")
-            ->andWhere(['<=', 'data_fine', date("Y-m-d H:i:s")])
-            ->asArray()
-            ->all();
+        return "SELECT *
+                FROM  processo_aziendale
+                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d H:i:s") . "
+                ";
 
     }
 
