@@ -200,7 +200,7 @@ class PaController extends Controller
     {
         return "SELECT *
                 FROM  processo_aziendale
-                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d H:i:s") . "
+                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "
                 ";
 
     }
