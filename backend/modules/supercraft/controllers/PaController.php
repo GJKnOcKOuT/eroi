@@ -8,7 +8,6 @@ use backend\modules\supercraft\models\FasiDiProcesso;
 use backend\modules\supercraft\models\PadreDi;
 use backend\modules\supercraft\models\ProcessoAziendale;
 use backend\modules\supercraft\models\PaSearch;
-use backend\modules\supercraft\models\query;
 use backend\modules\supercraft\models\User;
 use backend\modules\supercraft\models\dashboard;
 use Yii;
@@ -65,24 +64,6 @@ class PaController extends Controller
      */
     public function actionIndex()
     {
-        /*
-        $data = $this->queryDataAll();
-        $id_azienda = 0;
-        echo '<h1> TUTTI </h1>';
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-        $data = $this->queryDataInCorso();
-        echo '<h1> IN CORSO </h1>';
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-        $data = $this->queryDataArchiviati();
-        echo '<h1> ARCHIVIATI </h1>';
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-        exit;*/
 
         $searchModel = new PaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -91,17 +72,6 @@ class PaController extends Controller
         ]);
     }
 
-    private function visualizza($data)
-    {
-        try {
-            echo '<pre>';
-            var_dump($data);
-            echo '</pre>';
-        } catch (InvalidArgumentException $ex) {
-            return $ex;
-        }
-
-    }
 
     /**
      * @return mixed
