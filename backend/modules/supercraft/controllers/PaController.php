@@ -122,9 +122,14 @@ class PaController extends Controller
      */
     public function actionArchiviati()
     {
-        $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
-        $searchModel = new PaSearch();
-        $sql = $this->queryDataArchiviati();
+        $count = Yii::$app->db->createCommand("SELECT *
+                FROM  processo_aziendale
+                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "
+                ");
+        $sql = "SELECT *
+                FROM  processo_aziendale
+                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "
+                ";;
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
             'totalCount' => $count
@@ -193,15 +198,6 @@ class PaController extends Controller
             ->orWhere(['=', 'data_fine', ''])
             ->asArray()
             ->all();
-
-    }
-
-    private function queryDataArchiviati()
-    {
-        return "SELECT *
-                FROM  processo_aziendale
-                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "
-                ";
 
     }
 
@@ -294,19 +290,19 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             ->where(['=', 'id_padre', $model['id_fasi_di_processo']])
             ->asArray()
             ->all();
-            $figlio = FasiDiProcesso::find()
-                ->where(['=', "id_fasi_di_processo", $padre[0]['id_figlio']])
-                ->asArray()
-                ->all();
-            $nuova_fase = new FaseReale();
-            $nuova_fase->data_inizio = date("Y-m-d H:i:s");
-            $nuova_fase->descrizione = $figlio[0]['nome_processo'];
-            $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
-            $nuova_fase->id_fasi_di_processo = $figlio[0]['id_fasi_di_processo'];
-            $nuova_fase->save();
-            if ($nuova_fase == '') {
-                ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
-            }
+        $figlio = FasiDiProcesso::find()
+            ->where(['=', "id_fasi_di_processo", $padre[0]['id_figlio']])
+            ->asArray()
+            ->all();
+        $nuova_fase = new FaseReale();
+        $nuova_fase->data_inizio = date("Y-m-d H:i:s");
+        $nuova_fase->descrizione = $figlio[0]['nome_processo'];
+        $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
+        $nuova_fase->id_fasi_di_processo = $figlio[0]['id_fasi_di_processo'];
+        $nuova_fase->save();
+        if ($nuova_fase == '') {
+            ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
+        }
         return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
     }
 
