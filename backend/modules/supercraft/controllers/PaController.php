@@ -325,7 +325,6 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $padre = PadreDi::findAll(['=', 'id_padre', $model->id_fasi_di_processo]);
         $figlio = FasiDiProcesso::findAll($padre['id_figlio']);
         foreach ($figlio as $child) {
-            print_r('Inizio' . $child);
             $nuova_fase = new FaseReale();
             $nuova_fase->data_inizio = date("Y-m-d H:i:s");
             $nuova_fase->descrizione = $child['nome_processo'];
@@ -337,7 +336,8 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
                 break;
             }
         }
-        return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
+        print_r('Inizio' . $child);
+        //return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
     }
 
     /**a
