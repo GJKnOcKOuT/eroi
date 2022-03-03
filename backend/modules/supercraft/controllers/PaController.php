@@ -327,6 +327,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             ->where('id_padre =' . $model->id_fasi_di_processo)
             ->asArray()
             ->all();
+        print_r($model->fasiDiProcesso);
         print_r($padre);
         foreach ($padre as $father) {
             $figlio = FasiDiProcesso::find()
