@@ -331,12 +331,13 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
             $nuova_fase->id_fasi_di_processo = $child['id_fasi_di_processo'];
             $nuova_fase->save();
+            print_r($child);
             if ($nuova_fase == '') {
                 ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
                 break;
             }
         }
-        print_r('Inizio' . $child);
+
         //return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
     }
 
