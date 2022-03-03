@@ -199,7 +199,6 @@ class PaController extends Controller
     private function queryDataArchiviati()
     {
         return processoAziendale::find()
-            ->select(['id_processo_aziendale', 'nome', 'id_azienda', 'data_inizio', 'data_fine', 'descrizione'])
             ->where("id_azienda = 1")
             ->andWhere(['<=', 'data_fine', date("Y-m-d H:i:s")])
             ->asArray()
