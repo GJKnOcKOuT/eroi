@@ -213,7 +213,7 @@ class PaController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if (isset($_POST['id_azienda']) && isset($_POST['id_processo_aziendale'])) {
-                $this->visualizza($this->queryData($_POST['id_azienda'], $_POST['id_processo_aziendale']));
+                $this->visualizza($this->queryData($_POST['id_azienda'], $_POST['id_processo_aziendale'], new ProcessoAziendale));
             }
             Yii::$app->session->setFlash('success', 'You have entered the data correctly');
         }
