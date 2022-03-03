@@ -293,13 +293,12 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model->data_fine = date("Y-m-d H:i:s");
         $model->save();
         $padre = PadreDi::find()
-            ->select('id_figlio')
-            ->where('id_padre =' . $model->id_fasi_di_processo)
+            ->where(['=', 'id_padre', $model['id_fasi_di_processo']])
             ->asArray()
             ->all();
+        foreach ($padre as $father) {
             $figlio = FasiDiProcesso::find()
-                ->select(['nome_processo', 'id_fasi_di_processo'])
-                ->where("id_fasi_di_processo = " . $padre['id_figlio'])
+                ->where(['=', "id_fasi_di_processo", $father['id_figlio']])
                 ->asArray()
                 ->all();
             $nuova_fase = new FaseReale();
@@ -311,7 +310,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             if ($nuova_fase == '') {
                 ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
             }
-
+        }
 
         return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
     }
