@@ -122,14 +122,11 @@ class PaController extends Controller
      */
     public function actionArchiviati()
     {
-        $count = Yii::$app->db->createCommand("SELECT *
-                FROM  processo_aziendale
-                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "
-                ");
+        $count = Yii::$app->db->createCommand("SELECT COUNT(*) FROM  processo_aziendale WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "");
         $sql = "SELECT *
                 FROM  processo_aziendale
-                WHERE id_azienda = 1 AND data_fine <= " . date("Y-m-d") . "
-                ";;
+                WHERE id_azienda = 1 AND data_fine <= CURDATE()
+                ";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
             'totalCount' => $count
