@@ -293,7 +293,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             ->where(['=', "id_fasi_di_processo", $padre[0]['id_figlio']])
             ->asArray()
             ->all();
-        if ($figlio['id_processo_innovativo'] != null) {
+        if ($figlio['id_fasi_di_processo'] != null) {
             $nuova_fase = new FaseReale();
             $nuova_fase->data_inizio = date("Y-m-d H:i:s");
             $nuova_fase->descrizione = $figlio[0]['nome_processo'];
