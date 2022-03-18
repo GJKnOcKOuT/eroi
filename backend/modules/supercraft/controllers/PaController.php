@@ -82,7 +82,6 @@ class PaController extends Controller
     public function actionDashboard()
     {
         $count = Yii::$app->db->createCommand(' SELECT COUNT(*) FROM processo_aziendale WHERE id_azienda = 1');
-        $searchModel = new PaSearch();
         $sql = "SELECT *
                 FROM  processo_aziendale
                 WHERE id_azienda = 1
@@ -93,6 +92,7 @@ class PaController extends Controller
         ]);
         return $this->render('dashboard', [
             'dataProvider' => $dataProvider,
+            'pagination' => true,
         ]);
     }
 

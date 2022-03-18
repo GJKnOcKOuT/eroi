@@ -53,6 +53,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
             //'id_fase_attuale',
 
             ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
                 'urlCreator' => function ($action, $model1, $key, $index) {
 
                     if ($action === 'view') {
