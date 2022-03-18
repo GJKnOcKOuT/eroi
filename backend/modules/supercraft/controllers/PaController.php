@@ -319,12 +319,14 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         if (Yii::$app->request->isPost) {
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                $prima_fase = new FaseReale();
-                $prima_fase->id_fasi_di_processo = FasiDiProcesso::find()
-                    ->select('id_fasi_di_processo')
+
+                $fase = FasiDiProcesso::find()
                     ->where(['=', "id_fase", 1])
                     ->andWhere(['=', 'id_processo_innovativo', $model->id_processo_innovativo])
+                    ->asArray()
                     ->one();
+                $prima_fase = new FaseReale();
+                $prima_fase->id_fasi_di_processo = $fase['id_fasi_di_processo'];
                 $prima_fase->id_processo_aziendale = $model->id_processo_aziendale;
                 $prima_fase->data_inizio = date("Y-m-d H:i:s");
                 $prima_fase->save();
