@@ -294,7 +294,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             ->andWhere(['=', 'id_processo_innovativo', ProcessoAziendale::findOne($model->id_processo_aziendale)->id_processo_innovativo])
             ->asArray()
             ->all();
-        if ($figlio['id_processo_innovativo'] != '') {
+        if ($figlio['id_processo_innovativo'] != null) {
             $nuova_fase = new FaseReale();
             $nuova_fase->data_inizio = date("Y-m-d H:i:s");
             $nuova_fase->descrizione = $figlio[0]['nome_processo'];
