@@ -1,1 +1,1 @@
-a:2:{i:0;a:4:{s:44:"checkAccess:1:UserProfileWorkflow/TOVALIDATE";b:1;s:13:"Assignments:1";a:1:{s:5:"ADMIN";O:19:"yii\rbac\Assignment":3:{s:6:"userId";s:1:"1";s:8:"roleName";s:5:"ADMIN";s:9:"createdAt";N;}}s:46:"checkAccess:1:UserProfileWorkflow/NOTVALIDATED";b:1;s:19:"checkAccess:1:ADMIN";b:1;}i:1;N;}
+a:2:{i:0;a:2:{s:19:"checkAccess:1:ADMIN";b:1;s:13:"Assignments:1";a:1:{s:5:"ADMIN";O:19:"yii\rbac\Assignment":3:{s:6:"userId";s:1:"1";s:8:"roleName";s:5:"ADMIN";s:9:"createdAt";N;}}}i:1;N;}
