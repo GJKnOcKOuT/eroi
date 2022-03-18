@@ -39,6 +39,9 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'pagination' => [
+            'pageSize' => 15,
+        ],
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 

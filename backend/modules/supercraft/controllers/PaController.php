@@ -91,7 +91,6 @@ class PaController extends Controller
         ]);
         return $this->render('dashboard', [
             'dataProvider' => $dataProvider,
-            'pagination' => true,
         ]);
     }
 
