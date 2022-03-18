@@ -20,6 +20,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+//TODO: data inzio prima fase e controllo fine date
+
 /**
  * PaController implements the CRUD actions for ProcessoAziendale model.
  */
@@ -289,17 +291,18 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             ->all();
         $figlio = FasiDiProcesso::find()
             ->where(['=', "id_fasi_di_processo", $padre[0]['id_figlio']])
+            ->andWhere(['=', 'id_processo_innovativo', ProcessoAziendale::findOne($model->id_processo_aziendale)->id_processo_innovativo])
             ->asArray()
             ->all();
-        $nuova_fase = new FaseReale();
-        $nuova_fase->data_inizio = date("Y-m-d H:i:s");
-        $nuova_fase->descrizione = $figlio[0]['nome_processo'];
-        $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
-        $nuova_fase->id_fasi_di_processo = $figlio[0]['id_fasi_di_processo'];
-        $nuova_fase->save();
-        if ($nuova_fase == '') {
-            ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
-        }
+        if ($figlio != '') {
+            $nuova_fase = new FaseReale();
+            $nuova_fase->data_inizio = date("Y-m-d H:i:s");
+            $nuova_fase->descrizione = $figlio[0]['nome_processo'];
+            $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
+            $nuova_fase->id_fasi_di_processo = $figlio[0]['id_fasi_di_processo'];
+            $nuova_fase->save();
+        } else ProcessoAziendale::findOne($model->id_processo_aziendale)->data_fine = date("Y-m-d H:i:s");
+
         return $this->redirect(['view?id_processo_aziendale=' . $model->id_processo_aziendale . '&fl=0']);
     }
 
@@ -314,7 +317,16 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = new ProcessoAziendale();
 
         if (Yii::$app->request->isPost) {
+
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $prima_fase = new FaseReale();
+                $prima_fase->id_fasi_di_processo = FasiDiProcesso::find()
+                    ->where(['=', "id_fase", 1])
+                    ->andWhere(['=', 'id_processo_innovativo', $model->id_processo_innovativo])
+                    ->one();
+                $prima_fase->id_processo_aziendale = $model->id_processo_aziendale;
+                $prima_fase->data_inizio = date("Y-m-d H:i:s");
+                $prima_fase->save();
                 return $this->redirect(['dashboard', 'id_processo_aziendale' => $model->id_processo_aziendale, 'fl' => 0]);
             }
         } else {
