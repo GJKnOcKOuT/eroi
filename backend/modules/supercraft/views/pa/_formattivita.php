@@ -18,8 +18,6 @@ use yii\widgets\ActiveForm;
 $fase = FasiDiProcesso::findOne(FaseReale::findOne($model['fase_reale_id_fase_reale'])->id_fasi_di_processo)->id_fase;
 $cmf = ConfigurazioneModuliPerFase::find()
     ->select(['descrizione'])
-    ->where(['=', 'id_fase', $fase])
-    ->andWhere(['=', 'ripetibile', true])
     ->indexBy('id_modulo_eroi')
     ->column();
 
