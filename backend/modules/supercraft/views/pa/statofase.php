@@ -5,6 +5,7 @@
  * @Date 14/02/2022
  */
 
+use app\backend\modules\supercraft\models\ModuloEroi;
 use backend\modules\supercraft\models\FaseReale;
 use backend\modules\supercraft\models\ProcessoAziendale;
 use yii\grid\ActionColumn;
@@ -56,7 +57,7 @@ $this->registerCssFile("/supercraftcss/css/dashboard.css");
                 'template' => '{view} {delete}',
                 'urlCreator' => function ($action, $model1, $key, $index) use ($model) {
                     if ($action === 'view') {
-                        return '';
+                        return ModuloEroi::findOne($model1['id_modulo_eroi'])->url;
                     }
                     if ($action === 'delete') {
                         if ($model1['data_fine'] == '') $url = 'fineattivita?id_attivita_reale=' . $model1['id_attivita_reale'] . '&id_processo_aziendale=' . $model->id_processo_aziendale;
