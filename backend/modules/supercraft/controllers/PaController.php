@@ -290,9 +290,9 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         if ($figlio != '') {
             $nuova_fase = new FaseReale();
             $nuova_fase->data_inizio = date("Y-m-d H:i:s");
-            $nuova_fase->descrizione = $figlio[0]['nome_processo'];
+            $nuova_fase->descrizione = $figlio['nome_processo'];
             $nuova_fase->id_processo_aziendale = $model->id_processo_aziendale;
-            $nuova_fase->id_fasi_di_processo = $figlio[0]['id_fasi_di_processo'];
+            $nuova_fase->id_fasi_di_processo = $figlio['id_fasi_di_processo'];
             $nuova_fase->save();
         } else {
             $processoAziendale = ProcessoAziendale::findOne($model->id_processo_aziendale);
