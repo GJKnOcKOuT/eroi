@@ -291,7 +291,6 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             ->all();
         $figlio = FasiDiProcesso::find()
             ->where(['=', "id_fasi_di_processo", $padre[0]['id_figlio']])
-            ->andWhere(['=', 'id_processo_innovativo', ProcessoAziendale::findOne($model->id_processo_aziendale)->id_processo_innovativo])
             ->asArray()
             ->all();
         if ($figlio['id_processo_innovativo'] != null) {
