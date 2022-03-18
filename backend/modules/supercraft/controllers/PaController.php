@@ -285,15 +285,9 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
         $model = FaseReale::findOne($id_fase_reale);
         $model->data_fine = date("Y-m-d H:i:s");
         $model->save();
-        $padre = PadreDi::find()
-            ->where(['=', 'id_padre', $model['id_fasi_di_processo']])
-            ->asArray()
-            ->all();
-        $figlio = FasiDiProcesso::find()
-            ->where(['=', "id_fasi_di_processo", $padre[0]['id_figlio']])
-            ->asArray()
-            ->all();
-        if ($figlio['id_fasi_di_processo'] != null) {
+        $padre = PadreDi::findOne($model['id_fasi_di_processo']);
+        $figlio = FasiDiProcesso::findOne($padre['id_figlio']);
+        if ($figlio != '') {
             $nuova_fase = new FaseReale();
             $nuova_fase->data_inizio = date("Y-m-d H:i:s");
             $nuova_fase->descrizione = $figlio[0]['nome_processo'];
