@@ -87,7 +87,10 @@ class PaController extends Controller
         ";
         $dataProvider = new SqlDataProvider([
             'sql' => $sql,
-            'totalCount' => $count
+            'totalCount' => $count,
+            'pagination' => [
+                'pageSize' => 15,
+            ],
         ]);
         return $this->render('dashboard', [
             'dataProvider' => $dataProvider,
