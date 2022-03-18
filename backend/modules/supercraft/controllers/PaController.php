@@ -321,6 +321,7 @@ WHERE fase_reale_id_fase_reale =" . $id_fase_reale);
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 $prima_fase = new FaseReale();
                 $prima_fase->id_fasi_di_processo = FasiDiProcesso::find()
+                    ->select('id_fasi_di_processo')
                     ->where(['=', "id_fase", 1])
                     ->andWhere(['=', 'id_processo_innovativo', $model->id_processo_innovativo])
                     ->one();
