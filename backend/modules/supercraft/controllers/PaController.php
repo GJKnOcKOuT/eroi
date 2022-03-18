@@ -20,7 +20,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-//TODO: data inzio prima fase e controllo fine date
 
 /**
  * PaController implements the CRUD actions for ProcessoAziendale model.
